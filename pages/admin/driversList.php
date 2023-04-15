@@ -1,3 +1,4 @@
+<?php include("../../connection.php");?>
 <!DOCTYPE html>
 <html lang="en"><head>
 
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
     <link rel="stylesheet" href="../../styles/nav.css">
+
 </head>
 
 <body translate="no">
@@ -20,7 +22,7 @@
                         <li><a href="dashboard.php" style="font-size:17.5px"><i class="fas fa-tachometer-alt" style="margin:0px 5px;font-size:17.5px"></i>Dashboard</a> </li>
                     </a>
                     <a class="text-reset me-3" href="#">
-                        <li><a href="driversList.php" style="font-size:17.5px"><img src="../../assets/driver.png" style="width:20px;color:white;margin:0px 5PX;" alt="Driver">Drivers</a></li>
+                        <li><a  href="driversList.php" style="font-size:17.5px;text-decoration: underline"><img src="../../assets/driver.png" style="width:20px;color:white;margin:0px 5PX;" alt="Driver">Drivers</a></li>
                     </a>
                     <a class="text-reset me-3" href="#">
                         <li><a href="customerList.php" style="font-size:17.5px"><img src="../../assets/customer.png" style="width:20px;color:white;margin:0px 5PX;" alt="Driver">Customers</a></li>
@@ -31,6 +33,13 @@
                     <a class="text-reset me-3" href="#">
                         <li><a href="../../" style="font-size:17.5px">Log Out</a></li>
                     </a>
+                </div>
+                <div>
+                    <?php
+                    session_start();
+                    $name =$_SESSION['userName'];
+                    echo "$name"
+                    ?>
                 </div>
             </div>
         </nav>
@@ -49,7 +58,7 @@
             <h4>Drivers List</h4>
         </div>
         <div class="d-flex justify-content-center">
-            <table class="table table-hover" style="width: 75% !important;overflow-x: scroll">
+            <table class="table table-hover" style="width: 100% !important;overflow-x: scroll">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -67,34 +76,87 @@
                     <th scope="col">Action</th>
                 </tr>
                 </thead>
-                <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>saiprasad</td>
-                    <td>3562345</td>
-                    <td>s@gmail.com</td>
-                    <td>32323</td>
-                    <td>32413</td>
-                    <td>sdfsdf</td>
-                    <td>as234</td>
-                    <td>2</td>
-                    <td>240</td>
-                    <td>23</td>
-                    <td>2</td>
-                    <td><div>
-                            <a  href="editCustomer.php?customerId='.$id.'" class="btn btn-outline-primary ml-3">Approve</a>
-                            <a href="editDriver.php"  class="btn btn-outline-primary ml-3">Edit</a>
-                        </div>
-                    </td>
-                </tr>
-                </tbody>
+                <?php
+                    include("../../connection.php");
+                    $sql = "SELECT *,CONCAT(first_name,' ', last_name) AS full_name FROM driver";
+                    $result = mysqli_query($connection, $sql);
+                    while($row = $result->fetch_assoc()){
+                        $id= $row['id'];
+                        if($row['status'] == 0) {
+                            echo'<tbody>
+                                    <tr>
+                                        <th scope="row">'.$row['id'].'</th>
+                                        <td>'.$row['first_name'].''.$row['last_name'].'</td>
+                                        <td>'.$row['phoneno']. '</td>
+                                        <td>'.$row['email']. '</td>
+                                        <td>'.$row['vehicle_number'].'</td>
+                                        <td>'.$row['licence_number'].'</td>
+                                        <td>'.$row['pickup_from'].'</td>
+                                        <td>'.$row['pickup_to'].'</td>
+                                        <td>'.$row['capacity'].'</td>
+                                        <td>'.$row['cost_per_person'].'</td>
+                                        <td>'.$row['wallet'].'</td>
+                                        <td>'.$row['active_orders'].'</td>
+                                        <td>
+                                        <div>
+                                            <a href="approveDriver.php?driverId='.$id.'"  class="btn btn-outline-primary ml-3">Approve</a>
+                                         </div>
+                                        </td>
+                                    </tr>';
+                        }else{
+                            echo'<tbody>
+                                    <tr>
+                                        <th scope="row">'.$row['id'].'</th>
+                                        <td>'.$row['first_name'].''.$row['last_name'].'</td>
+                                        <td>'.$row['phoneno']. '</td>
+                                        <td>'.$row['email']. '</td>
+                                        <td>'.$row['vehicle_number'].'</td>
+                                        <td>'.$row['licence_number'].'</td>
+                                        <td>'.$row['pickup_from'].'</td>
+                                        <td>'.$row['pickup_to'].'</td>
+                                        <td>'.$row['capacity'].'</td>
+                                        <td>'.$row['cost_per_person'].'</td>
+                                        <td>'.$row['wallet'].'</td>
+                                        <td>'.$row['active_orders'].'</td>
+                                        <td>
+                                        <div>
+                                            <a href="editDriver.php?driverId='.$id.'"  class="btn btn-outline-primary ml-3">Edit</a>
+                                         </div>
+                                        </td>
+                                    </tr>';
+                        }
+
+                    }?>
+                            </tbody>
             </table>
         </div>
     </div>
 </section>
+    <script>
+        function something(){
+            document.getElementById("mainArea").style.display='block';
+        }
+
+        window.addEventListener('mouseup', function(event){
+            var box = document.getElementById('mainArea');
+            if(event.target != box && event.target.parentNode != box){
+                box.style.display='none';
+            }
+        })
+    </script>
 </body>
 
 <!-- <script>
     
 </script> -->
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"></script>
+<script>
+    function open(){
+        document.getElementById("something").display.style='block';
+    }
+
+</script>
 </html>

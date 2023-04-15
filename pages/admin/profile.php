@@ -1,3 +1,7 @@
+<?php
+session_start();
+//$_SESSION['userId']=$_GET['driverId'];
+?>
 <html lang="en"><head>
 
     <meta charset="UTF-8">
@@ -23,11 +27,18 @@
                 <li><a href="customerList.php" style="font-size:17.5px"><img src="../../assets/customer.png" style="width:20px;color:white;margin:0px 5PX;" alt="Driver">Customers</a></li>
             </a>
             <a class="text-reset me-3" href="#">
-                <li><a  href="profile.php"><i class="far fa-clone"></i>My Profile</a></li>
+                <li><a  href="profile.php" style="text-decoration: underline"><i class="far fa-clone"></i>My Profile</a></li>
             </a>
             <a class="text-reset me-3" href="#">
                 <li><a href="../../" style="font-size:17.5px">Log Out</a></li>
             </a>
+        </div>
+        <div>
+            <?php
+            session_start();
+            $name =$_SESSION['userName'];
+            echo "$name"
+            ?>
         </div>
     </div>
 </nav>
@@ -36,7 +47,16 @@
         <div class="col-12 m-0 p-0">
             <section style="background-color: #eee;">
                 <div class="container py-5">
-
+<!--                    <div class="row">-->
+<!--                        <div class="col">-->
+<!--                            <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">-->
+<!--                                <ol class="breadcrumb mb-0">-->
+<!--                                    <li class="breadcrumb-item"><a href="../admin/customerList.php">Customer</a></li>-->
+<!--                                    <li class="breadcrumb-item active" aria-current="page">Customer Profile</li>-->
+<!--                                </ol>-->
+<!--                            </nav>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
                     <div class="row">
                         <div class="col-lg-4">
@@ -45,7 +65,16 @@
                                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
                                          class="rounded-circle img-fluid" style="width: 150px;">
                                     <h5 class="my-3">
-                                       sai
+                                        <?php
+                                        // session_start();
+                                        include "../../connection.php";
+                                        $id = $_SESSION['userId'];
+                                        $sql = "SELECT *,CONCAT(last_name,' ',first_name) AS fullName 
+                                                FROM superadminlogin where id='$id'";
+                                        $result = mysqli_query($connection, $sql);
+                                        while($row = $result->fetch_assoc()){
+                                        ?>
+                                        <?php echo $row['first_name'].' '.$row['last_name'];?>
                                     </h5>
                                 </div>
                             </div>
@@ -59,7 +88,8 @@
                                         </div>
                                         <div class="col-sm-9">
                                             <p class="text-muted mb-0">
-                                                rlsjd
+                                                <?php echo $row['fullName'];
+                                                echo '<br>';?>
                                             </p>
 
                                         </div>
@@ -71,7 +101,8 @@
                                         </div>
                                         <div class="col-sm-9">
                                             <p class="text-muted mb-0">
-                                               ad
+                                                <?php echo $row['email'];
+                                                echo '<br>';?>
                                             </p>
 
                                         </div>
@@ -79,6 +110,7 @@
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-9">
+                                            <?php break; }?>
                                         </div>
                                     </div>
                                 </div>
@@ -96,4 +128,8 @@
 
 </body>
 
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"></script>
 </html>

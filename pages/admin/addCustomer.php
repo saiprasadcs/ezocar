@@ -42,7 +42,7 @@
                     <div class="card card-registration my-4">
                         <div class="row g-0">
                             <div class="col-xl-12">
-                                <form id="register"
+                                <form id="register" action="addCustomerForm.php"
                                       method="POST">
                                 <div class="card-body p-md-5 text-black">
                                     <h3 class="mb-5 text-uppercase">Add Customer</h3>

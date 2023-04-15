@@ -1,3 +1,4 @@
+<?php include("../../connection.php");?>
 <!DOCTYPE html>
 <html lang="en"><head>
 
@@ -22,7 +23,7 @@
                 <li><a href="driversList.php" style="font-size:17.5px"><img src="../../assets/driver.png" style="width:20px;color:white;margin:0px 5PX;" alt="Driver">Drivers</a></li>
             </a>
             <a class="text-reset me-3" href="#">
-                <li><a href="customerList.php" style="font-size:17.5px"><img src="../../assets/customer.png" style="width:20px;color:white;margin:0px 5PX;" alt="Driver">Customers</a></li>
+                <li><a href="customerList.php" style="font-size:17.5px;text-decoration: underline"><img src="../../assets/customer.png" style="width:20px;color:white;margin:0px 5PX;" alt="Driver">Customers</a></li>
             </a>
             <a class="text-reset me-3" href="#">
                 <li><a  href="profile.php"><i class="far fa-clone"></i>My Profile</a></li>
@@ -30,6 +31,13 @@
             <a class="text-reset me-3" href="#">
                 <li><a href="../../" style="font-size:17.5px">Log Out</a></li>
             </a>
+        </div>
+        <div>
+            <?php
+            session_start();
+            $name =$_SESSION['userName'];
+            echo "$name"
+            ?>
         </div>
     </div>
 </nav>
@@ -60,19 +68,41 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>prasad</td>
-                    <td>s</td>
-                    <td>2345345</td>
-                    <td>l@gmail.com</td>
-                    <td><div>
-                            <a  href="editCustomer.php?customerId='.$id.'" class="btn btn-outline-primary ml-3">Approve</a>
-                            <a  href="editCustomer.php?customerId='.$id.'" class="btn btn-outline-primary ml-3">Edit</a>
-                        </div>
-                    </td>
-                </tr>
+                    <?php
+                        $sql = "SELECT * FROM customer";
+                        $result = mysqli_query($connection, $sql);
+                        while($row = $result->fetch_assoc()){
+                            $id = $row['id'];
+                            if ($row['status'] == 1){
+                                echo'<tbody>
+                                        <tr>
+                                            <th scope="row">'.$row['id'].'</th>
+                                                <td>'.$row['first_name'].'</td>
+                                                <td>'.$row['last_name'].'</td>
+                                                <td>'.$row['phoneno'].'</td>
+                                                <td>'.$row['email'].'</td>
+                                                <td><div>
+                                                        <a  href="editCustomer.php?customerId='.$id.'" class="btn btn-outline-primary ml-3">Edit</a>
+                                                    </div>
+                                                </td>
+                                        </tr>';
+                            }else{
+                                echo'<tbody>
+                                        <tr>
+                                            <th scope="row">'.$row['id'].'</th>
+                                                <td>'.$row['first_name'].'</td>
+                                                <td>'.$row['last_name'].'</td>
+                                                <td>'.$row['phoneno'].'</td>
+                                                <td>'.$row['email'].'</td>
+                                                <td><div>
+                                                        <a  href="approveCustomer.php?customerId='.$id.'" class="btn btn-outline-primary ml-3">Approve</a>
+                                                    </div>
+                                                </td>
+                                        </tr>';
+                            }
+
+                        }
+                                        ?>
                 </tbody>
             </table>
         </div>

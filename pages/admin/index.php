@@ -1,3 +1,7 @@
+<?php include("../../connection.php");
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,23 +22,22 @@
     
 <body>
     <div class="fullPage">
-        <div class="navbar">
-            <div><a href="dashboard.php">Ezocar</a></div>
+        <!-- <div class="navbar">
+            <div><a href="dashboard.php" style = "color:#F3C693;">Ezocar</a></div>
             <nav>
                 <ul>
-                    <li><a href="dashboard.php">Home</a></li>
-                    <li><a href="dashboard.php">About</a></li>
-                    <li><a href="dashboard.php">Services</a></li>
-                    <li><a href="dashboard.php">Contact</a></li>
-                    <li><button type="button" name="button" onclick="document.getElementById('loginForm').style.display='block'">Login</button></li>
+                    <li><a href="dashboard.php" style = "color:#F3C693;">Home</a></li>
+                    <li><a href="dashboard.php" style = "color:#F3C693;">About</a></li>
+                    <li><a href="dashboard.php" style = "color:#F3C693;">Services</a></li>
+                    <li><a href="dashboard.php" style = "color:#F3C693;">Contact</a></li>
+                    <li><button type="button" name="button" onclick="document.getElementById('loginForm').style.display='block'" style = "color:#F3C693;">Login</button></li>
                 </ul>
             </nav>
-        </div>
+        </div> -->
             <div class="loginPage" id="loginForm">
                 <div class="formBox">
-                    <a href="dashboard.php" >Ezocar</a>
-                    <form class="inputGroupLogin" name="login" style="top:110px" id="login"
-                          action="driversList.php" method="POST" onsubmit="return validation()">
+                    <a href="dashboard.php" style = "color:#F3C693;">Ezocar</a>
+                    <form class="inputGroupLogin" name="login" style="top:110px" id="login" action="login.php" method="POST" onsubmit="return validation()">
                         <div style="margin:5px">
                             <input type="text" class="inputField" id="username" name="username" placeholder="Email Id" >
                         </div>

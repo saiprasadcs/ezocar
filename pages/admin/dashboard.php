@@ -31,19 +31,46 @@
                 <li><a href="../../" style="font-size:17.5px">Log Out</a></li>
             </a>
         </div>
+        <div>
+            <?php
+            session_start();
+            $name =$_SESSION['userName'];
+            echo "$name"
+            ?>
+        </div>
     </div>
 </nav>
 <div class="row d-flex justify-content-center mt-5">
     <div class="col-md-6">
         <div class="card mb-4 mb-md-0">
             <div class="card-body">
-                <p class="mb-1" style="font-size: .77rem;">Drivers - 12</p>
+                 <?php
+                            include '../../connection.php';
+                 $sql = "SELECT * FROM `driver`";
+                 $result = $connection->query($sql);
+                            $id = $_SESSION['userId'];
+                            if ($result){
+
+                                echo "<p class=\"mb-1\" style=\"font-size: 1.77rem;\">Drivers-$result->num_rows</p>";
+                            }
+                            ?>
+
+
                 <div class="progress rounded" style="height: 5px;">
                     <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80"
                          aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
                 <span class="mt-4"></span>
-                <p class="mb-1 my-4" style="font-size: .77rem;">Customers - 12</p>
+                <?php
+                include '../../connection.php';
+                $sql = "SELECT * FROM `customer`";
+                $result = $connection->query($sql);
+                $id = $_SESSION['userId'];
+                if ($result){
+
+                    echo "<p class=\"mb-1\" style=\"font-size: 1.77rem;\">Customers-$result->num_rows</p>";
+                }
+                ?>
                 <div class="progress rounded" style="height: 5px;">
                     <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80"
                          aria-valuemin="0" aria-valuemax="100"></div>
