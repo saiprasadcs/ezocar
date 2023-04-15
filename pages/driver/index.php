@@ -1,3 +1,20 @@
+<?php
+    include("../../connection.php");
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $roleId = 3;
+        $firstName = $_POST['first_name'];
+        $lastName = $_POST['last_name'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $sql = "INSERT INTO driver (role_id, first_name, last_name, email, password) 
+        VALUES('$roleId','$firstName', '$lastName', '$email', '$password')";
+        $result = mysqli_query($connection, $sql);
+        // if($result){
+        //     echo '<br>Inserted Data SuccessFully';
+        // }else{
+        //     echo 'Error ! '.mysqli_error($connection);
+        // }
+    }?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,28 +28,28 @@
 <body>
 
     <div class="fullPage">
-        <div class="navbar">
-            <div><a href="">Ezocar</a></div> 
+        <!-- <div class="navbar">
+            <div><a href="" style = "color:#F3C693;">Ezocar</a></div> 
             <nav>
                 <ul>
-                    <li><a href="">Home</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Services</a></li>
-                    <li><a href="">Contact</a></li>
-                    <li><button type="button" name="button" onclick="document.getElementById('loginForm').style.display='block'">Login</button></li>
+                    <li><a href="" style = "color:#F3C693;">Home</a></li>
+                    <li><a href="" style = "color:#F3C693;">About</a></li>
+                    <li><a href="" style = "color:#F3C693;">Services</a></li>
+                    <li><a href="" style = "color:#F3C693;">Contact</a></li>
+                    <li><button type="button" name="button" onclick="document.getElementById('loginForm').style.display='block'" style = "color:#F3C693;">Login</button></li>
                 </ul>
             </nav>
-        </div>
+        </div> -->
         <div class="loginPage" id="loginForm">
             <div class="formBox">
-                <a href="">Ezocar</a>
+                <a href="" style = "color:#F3C693;">Ezocar</a>
                 <h3 style="color:white;text-align:center;margin:10px 0px 0px 0px;font-weight:10px">Driver Page</h3>
                 <div class="buttonBox">
                     <div class="btn" id="btn"></div>
                     <button style="margin:auto 2.5px" type="button" name="button" class="toggle-btn" onclick="login()">Log In</button>
                     <button style="margin:auto 2.5px" type="button" name="button" class="toggle-btn" onclick="register()">Register</button>
                 </div>
-                <form class="inputGroupLogin" id="login" action="myrides.php" method="POST" onsubmit="return validation()">
+                <form class="inputGroupLogin" id="login" action="login.php" method="POST" onsubmit="return validation()">
                     <div style="margin:20px 0px 0px 0px">
                         <input type="text" class="inputField" name="username" placeholder="Email Id" >
                     </div>
@@ -54,7 +71,7 @@
 
 
                 <form style="overflow-y: auto;height: 398px;"
-                      class="inputGroupRegister" id="register"
+                      class="inputGroupRegister" id="register" action="register.php"
                       method="POST" style="margin-top:15px;">
                     <input style="margin:30px auto 0px 0px "  type="text" name="first_name" class="inputField" placeholder="First Name" required>
                     <input style="margin:15px auto 0px 0px" type="text" name="last_name" class="inputField" placeholder="Last Name" required>
@@ -69,7 +86,7 @@
                     <input style="margin:15px auto 0px 0px" type="text" name="cost_per_person" class="inputField" placeholder="Cost per Person" required>
                     <input style="margin:15px auto 0px 0px" type="password" name="password" class="inputField" placeholder="Enter Password" required>
                     <input style="margin:15px auto 0px 0px" type="password" name="cpassword" class="inputField" placeholder="Confirm Password" required>
-                    <a href="myrides.php" class="submitBtn"  style="font-size:15px;width:60%;padding:10px;margin-bottom: 70px;display:flex;text-align:center;justify-cotent:center;align-items:center" >Register</a>
+                    <button type="submit" class="submitBtn"  style="font-size:15px;width:60%;padding:10px;margin-bottom: 70px;display:flex;text-align:center;justify-cotent:center;align-items:center" >Register</button>
                 </form>
             </div>
         </div>

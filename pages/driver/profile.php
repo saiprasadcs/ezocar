@@ -1,5 +1,6 @@
 
 <html lang="en"><head>
+
     <meta charset="UTF-8">
     <title>EzoCar</title>
     <meta charset="UTF-8">
@@ -13,18 +14,25 @@
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
         <div class="d-flex align-items-center">
-            <a class="text-reset me-3" href="#">
-                <li><a  href=""><i class="fas fa-tachometer-alt"></i>Dashboard</a> </li>
-            </a>
+<!--            <a class="text-reset me-3" href="#">-->
+<!--                <li><a  href=""><i class="fas fa-tachometer-alt"></i>Dashboard</a> </li>-->
+<!--            </a>-->
             <a class="text-reset me-3" href="#">
                 <li><a  href="myrides.php"><i class="far fa-address-book"></i>My Rides</a></li>
             </a>
             <a class="text-reset me-3" href="#">
-                <li><a  href="profile.php"><i class="far fa-clone"></i>My Profile</a></li>
+                <li><a  href="profile.php" style="    text-decoration: underline;" ><i class="far fa-clone"></i>My Profile</a></li>
             </a>
             <a class="text-reset me-3" href="#">
                 <li><a style="" href="../../">Log Out</a></li>
             </a>
+        </div>
+        <div>
+            <?php
+            session_start();
+            $name =$_SESSION['userName'];
+            echo "$name"
+            ?>
         </div>
     </div>
 </nav>
@@ -33,16 +41,16 @@
         <div class="col-12 m-0 p-0">
             <section style="background-color: #eee;">
                 <div class="container py-5">
-                    <div class="row">
-                        <div class="col">
-                            <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">
-                                <ol class="breadcrumb mb-0">
-                                    <li class="breadcrumb-item"><a href="../admin/customerList.php">Customer</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Customer Profile</li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
+<!--                    <div class="row">-->
+<!--                        <div class="col">-->
+<!--                            <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">-->
+<!--                                <ol class="breadcrumb mb-0">-->
+<!--                                    <li class="breadcrumb-item"><a href="../admin/customerList.php">Customer</a></li>-->
+<!--                                    <li class="breadcrumb-item active" aria-current="page">Customer Profile</li>-->
+<!--                                </ol>-->
+<!--                            </nav>-->
+<!--                        </div>-->
+<!--                    </div>-->
 
                     <div class="row">
                         <div class="col-lg-4">
@@ -51,11 +59,21 @@
                                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
                                          class="rounded-circle img-fluid" style="width: 150px;">
                                     <h5 class="my-3">
-                                    sfsdf
+                                        <?php
+                                        session_start();
+                                        include "../../connection.php";
+                                        $id = $_SESSION['userId'];
+                                        $sql = "SELECT *,CONCAT(last_name,' ',first_name) AS fullName 
+                                                FROM driver where id='$id'";
+                                        $result = mysqli_query($connection, $sql);
+                                        while($row = $result->fetch_assoc()){
+                                        ?>
+                                        <?php echo $row['first_name'];?>
                                     </h5>
-                                    <p class="text-muted mb-1">Wallet: 23</p>
+                                    <p class="text-muted mb-1">Wallet: <?php echo $row['wallet']?></p>
                                     <form name="walletForm"
-                                          onsubmit="return validateWallet()" method="POST" >
+                                          onsubmit="return validateWallet()"
+                                          action="addWallet.php?userId=<?php echo $id?>" method="POST" >
                                         <div>
                                             <input class="form-control" name="wallet" placeholder="" type="number">
                                         </div>
@@ -75,7 +93,8 @@
                                         </div>
                                         <div class="col-sm-9">
                                             <p class="text-muted mb-0">
-                                                namee
+                                                <?php echo $row['fullName'];
+                                                echo '<br>';?>
                                             </p>
 
                                         </div>
@@ -87,7 +106,8 @@
                                         </div>
                                         <div class="col-sm-9">
                                             <p class="text-muted mb-0">
-                                               emailidsdf
+                                                <?php echo $row['email'];
+                                                echo '<br>';?>
                                             </p>
 
                                         </div>
@@ -99,7 +119,9 @@
                                         </div>
                                         <div class="col-sm-9">
                                             <p class="text-muted mb-0">
-                                                3245345
+                                                <?php
+                                                echo $row['phoneno'];
+                                                echo '<br>';?>
                                             </p>
 
                                         </div>
@@ -111,7 +133,9 @@
                                         </div>
                                         <div class="col-sm-9">
                                             <p class="text-muted mb-0">
-                                               32323
+                                                <?php
+                                                echo $row['vehicle_number'];
+                                                echo '<br>';?>
                                             </p>
 
                                         </div>
@@ -119,7 +143,8 @@
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-9">
-                                            <p class="text-muted mb-0"></p>
+                                            <p class="text-muted mb-0"><?php echo $row['address'];?></p>
+                                            <?php break; }?>
                                         </div>
                                     </div>
                                 </div>
@@ -148,4 +173,9 @@
     }
 </script>
 </body>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"></script>
 </html>
