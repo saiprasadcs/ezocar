@@ -1,7 +1,7 @@
 <?php
 $severname = 'localhost';
 $username = 'root';
-$password = '';
+$password = 'root';
 $database = 'ezocar';
 
 $connection = mysqli_connect($severname, $username, $password, $database);

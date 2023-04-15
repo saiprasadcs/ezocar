@@ -13,46 +13,48 @@
     
 </head>
 <!-- Main Content -->
-<body style="background-image: url('./assets/ola.png');background-repeat: none;background-size:cover;">
-        <div class="container">
-             <div class="containercard mx-5 p-5 text-center">
-         <body style="background-image: url('./assets/bg-3.webp');background-repeat: no-repeat;background-size:cover;">
-       <div class="container">
-        <div class="containercard mx-5 p-5 text-center">
-                <div class="row">
-                    <div class="col-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title text-primary">ADMIN</h5>
-                                <a href="pages/admin">
-                                   <button type="submit" value="Submit" class="btn" >LOGIN</button>
-                                </a> 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title text-primary">CUSTOMER</h5>
-                                <a href="pages/customer">
-                                   <button type="submit" value="Submit" class="btn">LOGIN</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title text-primary">DRIVER</h5>
-                               <a href="pages/driver">
-                                 <button type="submit" class="btn btn-dark ">LOGIN</button>
-                               </a>
-                            </div>
+<body style="background-image: url('./assets/bg-3.webp');background-repeat: none;background-size:cover;">
+       <div class="container-fluid">
+            <div class="p-5 text-center">
+                <div class=" home2-choose-area d-flex flex-row-reverse mt-1">
+                    <div class="col-2 page mx-2" >
+                        <div class="single-choose mt-2 mb-2">
+                            <h5 style = "color:white!important; ">
+                                ADMIN
+                            </h5>
+                            <a href="pages/admin">
+                               <button type="submit" value="Submit" class="btn" >LOGIN</button>
+                            </a> 
                         </div>
                     </div>
                 </div>
-        </div>
+                <div  class=" home2-choose-area d-flex flex-row-reverse mt-1">
+                    <div class="col-2 page mx-2">
+                        <div class="single-choose mt-2 mb-2">
+                            <h5 style = "color:white!important; ">
+                                CUSTOMER
+                            </h5>
+                            <a href="pages/customer">
+                                <button type="submit" value="Submit" class="btn" >LOGIN</button>
+                            </a> 
+                        </div>
+                    </div>
+                </div>
+                <div  class=" home2-choose-area d-flex flex-row-reverse mt-1">
+                    <div class="col-2 page mx-2">
+                        <div class="single-choose mt-2 mb-2">
+                            <h5 style = "color:white!important; ">
+                                DRIVER
+                            </h5>
+                            <a href="pages/driver">
+                               <button type="submit" value="Submit" class="btn" >LOGIN</button>
+                            </a> 
+                        </div>     
+                    </div>
+                </div>
+            </div>
        </div>
+      
 
 </body>
 </html>
