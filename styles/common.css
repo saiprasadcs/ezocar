@@ -64,16 +64,16 @@ form{
     transition: all .5s ease;
     width: 70%;
     border-radius: 30px;
-    color:#5161ce;
+    color:whitesmoke;
     font-weight: 600;
-    background-color: #fff;
-    border: 1px solid #5161ce;
+    background-color: #F3C693;
+    border: 1px solid #F3C693;
     margin-top: 1.5em;
     margin-bottom: 1em;
 }
 .btn:hover, .btn:focus{
-    background-color: #008080;
-    color:#fff;
+    background-color: #f3c693e1;
+    color:black;
 }
 /*///*/
 
@@ -247,4 +247,89 @@ i {
         left: -25px;
     }
 }
+.section2 {
+    float: left;
+    margin: 10px 0px 10px 5px;
+    width: 100%;
+    background-color: #2981c0;
+    height: 150px;
+    padding: 10px;
+    border-radius: 20px 20px;
+    box-shadow: 1px 1px 5px grey;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+.fa-3x {
+    font-size: 3em;
+}
+.home2-choose-area .single-choose {
+    position: relative;
+    transition: .3s;
+    overflow: hidden;
+    text-align: center;
+    box-shadow:  0 0 20px 3px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.home2-choose-area .single-choose .icon i {
+    font-size: 80px !important;
+    color: rgba(0, 0, 0, 0.9);
+    transition: .3s;
+}
+
+
+.home2-choose-area .single-choose .icon i {
+    font-size: 100px !important;
+    color: rgba(0, 0, 0, 0.9) !important;
+    transition: .3s;
+}
+[class^=flaticon-]:before, [class*=" flaticon-"]:before, [class^=flaticon-]:after, [class*=" flaticon-"]:after {
+    font-family: Flaticon;
+    font-style: normal;
+}
+
+
+.home2-choose-area .single-choose:hover {
+    transform: translateY(-10px);
+}
+.home2-choose-area .single-choose:hover .icon i {
+    /*color: #1d42d9 !important;*/
+    color:rgba(0, 0, 0, 0.9) !important;
+}
+/*@media (min-width: 992px){*/
+/*    .col-lg-2 {*/
+/*        flex: 0 0 auto;*/
+/*        width: 16.66666667%;*/
+/*    }*/
+/*}*/
+
+.home2-choose-area .single-choose h5 {
+    text-align: center;
+    color:  rgba(0, 0, 0, 0.9) !important;
+    margin-bottom: 0;
+    padding: 10px 5px;
+    font-size: 17px;
+    background-color: rgba(0, 0, 0, 0.9) !important;;
+}
+.home2-choose-area .single-choose .icon {
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 4px !important;
+    text-align: center !important;
+    overflow: hidden;
+    margin: auto !important;
+    box-shadow: 2px 2px 20px 4px rgb(0 0 0 / 7%) !important;
+    padding: 30px 20px !important;
+}
+.page{
+    background-color:rgba(0, 0, 0, 0.9);
+    height: fit-content;
+}
+.mx-5 {
+    margin-right: 0rem!important;
+    margin-left: 22rem!important;
+}
+
+
 
