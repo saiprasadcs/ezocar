@@ -47,6 +47,8 @@ if (isset($_GET['rideId'])) {
                  <h3>Error in driver update wallet</h3><br/>
                  </div>";
             }
+        }else{
+            header("Location:myrides.php?type=1");
         }
     } else {
         echo "<div class='form'>
