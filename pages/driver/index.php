@@ -69,10 +69,9 @@
 
 
 
-
                 <form style="overflow-y: auto;height: 398px;"
                       class="inputGroupRegister" id="register" action="register.php"
-                      method="POST" style="margin-top:15px;">
+                      method="POST" enctype="multipart/form-data" style="margin-top:15px;">
                     <input style="margin:30px auto 0px 0px "  type="text" name="first_name" class="inputField" placeholder="First Name" required>
                     <input style="margin:15px auto 0px 0px" type="text" name="last_name" class="inputField" placeholder="Last Name" required>
                     <input style="margin:15px auto 0px 0px" type="text" name="email" class="inputField" placeholder="Email Id" required>
@@ -86,8 +85,10 @@
                     <input style="margin:15px auto 0px 0px" type="text" name="cost_per_person" class="inputField" placeholder="Cost per Person" required>
                     <input style="margin:15px auto 0px 0px" type="password" name="password" class="inputField" placeholder="Enter Password" required>
                     <input style="margin:15px auto 0px 0px" type="password" name="cpassword" class="inputField" placeholder="Confirm Password" required>
-                    <button type="submit" class="submitBtn"  style="font-size:15px;width:60%;padding:10px;margin-bottom: 70px;display:flex;text-align:center;justify-cotent:center;align-items:center" >Register</button>
+                    <input style="margin:15px auto 0px 0px" type="file" name="file" id="file" class="inputField" required>
+                    <button type="submit" class="submitBtn"  style="font-size:15px;width:60%;padding:10px;margin-bottom: 70px;display:flex;text-align:center;justify-cotent:center;align-items:center" >Registera</button>
                 </form>
+
             </div>
         </div>
     </div>
