@@ -57,6 +57,8 @@
                     </li>
                     <li role=\"presentation\"><a href=\"myrides.php?type=0\" aria-controls=\"recent-jobs\" role=\"tab\" data-toggle=\"tab\" class=\"active show\" aria-selected=\"false\">Pending/Upcoming</a></li>
                     <li role=\"presentation\"><a href=\"myrides.php?type=2\" aria-controls=\"recent-jobs\" role=\"tab\" data-toggle=\"tab\" class=\"\" aria-selected=\"false\">Rejected</a></li>
+                    <li role=\"presentation\"><a href=\"myrides.php?type=3\" aria-controls=\"recent-jobs\" role=\"tab\" data-toggle=\"tab\" class=\"\" aria-selected=\"false\">Picked</a></li>
+                    <li role=\"presentation\"><a href=\"myrides.php?type=4\" aria-controls=\"recent-jobs\" role=\"tab\" data-toggle=\"tab\" class=\"\" aria-selected=\"false\">Completed</a></li>
                 ";
                     }elseif (isset($_GET['type']) && $_GET['type'] == '1'){
                         echo "   <li role=\"presentation\" class=\"active\">
@@ -64,6 +66,8 @@
                     </li>
                     <li role=\"presentation\"><a href=\"myrides.php?type=0\" aria-controls=\"recent-jobs\" role=\"tab\" data-toggle=\"tab\" class=\"\" aria-selected=\"false\">Pending/Upcoming</a></li>
                     <li role=\"presentation\"><a href=\"myrides.php?type=2\" aria-controls=\"recent-jobs\" role=\"tab\" data-toggle=\"tab\" class=\"\" aria-selected=\"false\">Rejected</a></li>
+                    <li role=\"presentation\"><a href=\"myrides.php?type=3\" aria-controls=\"recent-jobs\" role=\"tab\" data-toggle=\"tab\" class=\"\" aria-selected=\"false\">Picked</a></li>
+                    <li role=\"presentation\"><a href=\"myrides.php?type=4\" aria-controls=\"recent-jobs\" role=\"tab\" data-toggle=\"tab\" class=\"\" aria-selected=\"false\">Completed</a></li>
                 ";
                     }elseif (isset($_GET['type']) && $_GET['type'] == '2'){
                         echo "   <li role=\"presentation\" class=\"active\">
@@ -71,6 +75,26 @@
                     </li>
                     <li role=\"presentation\"><a href=\"myrides.php?type=0\" aria-controls=\"recent-jobs\" role=\"tab\" data-toggle=\"tab\" class=\"\" aria-selected=\"false\">Pending/Upcoming</a></li>
                     <li role=\"presentation\"><a href=\"myrides.php?type=2\" aria-controls=\"recent-jobs\" role=\"tab\" data-toggle=\"tab\" class=\"active show\" aria-selected=\"false\">Rejected</a></li>
+                    <li role=\"presentation\"><a href=\"myrides.php?type=3\" aria-controls=\"recent-jobs\" role=\"tab\" data-toggle=\"tab\" class=\"\" aria-selected=\"false\">Picked</a></li>
+                    <li role=\"presentation\"><a href=\"myrides.php?type=4\" aria-controls=\"recent-jobs\" role=\"tab\" data-toggle=\"tab\" class=\"\" aria-selected=\"false\">Completed</a></li>
+                ";
+                    }elseif (isset($_GET['type']) && $_GET['type'] == '3'){
+                        echo "   <li role=\"presentation\" >
+                        <a class=\"\" href=\"myrides.php?type=1\" aria-controls=\"hot-jobs\" role=\"tab\" data-toggle=\"tab\" aria-selected=\"true\">Active</a>
+                    </li>
+                    <li role=\"presentation\"><a href=\"myrides.php?type=0\" aria-controls=\"recent-jobs\" role=\"tab\" data-toggle=\"tab\" class=\"\" aria-selected=\"false\">Pending/Upcoming</a></li>
+                    <li role=\"presentation\"><a href=\"myrides.php?type=2\" aria-controls=\"recent-jobs\" role=\"tab\" data-toggle=\"tab\" class=\"\" aria-selected=\"false\">Rejected</a></li>
+                    <li role=\"presentation\" class=\"\"><a href=\"myrides.php?type=3\" aria-controls=\"recent-jobs\" role=\"tab\" data-toggle=\"tab\" class=\"active show\" aria-selected=\"false\">Picked</a></li>
+                    <li role=\"presentation\" class=\"\"><a href=\"myrides.php?type=4\" aria-controls=\"recent-jobs\" role=\"tab\" data-toggle=\"tab\" class=\"\" aria-selected=\"false\">Completed</a></li>
+                ";
+                    }elseif (isset($_GET['type']) && $_GET['type'] == '4'){
+                        echo "   <li role=\"presentation\" >
+                        <a class=\"\" href=\"myrides.php?type=1\" aria-controls=\"hot-jobs\" role=\"tab\" data-toggle=\"tab\" aria-selected=\"true\">Active</a>
+                    </li>
+                    <li role=\"presentation\"><a href=\"myrides.php?type=0\" aria-controls=\"recent-jobs\" role=\"tab\" data-toggle=\"tab\" class=\"\" aria-selected=\"false\">Pending/Upcoming</a></li>
+                    <li role=\"presentation\"><a href=\"myrides.php?type=2\" aria-controls=\"recent-jobs\" role=\"tab\" data-toggle=\"tab\" class=\"\" aria-selected=\"false\">Rejected</a></li>
+                    <li role=\"presentation\" class=\"\"><a href=\"myrides.php?type=3\" aria-controls=\"recent-jobs\" role=\"tab\" data-toggle=\"tab\" class=\"\" aria-selected=\"false\">Picked</a></li>
+                    <li role=\"presentation\" class=\"active\"><a href=\"myrides.php?type=4\" aria-controls=\"recent-jobs\" role=\"tab\" data-toggle=\"tab\" class=\"active show\" aria-selected=\"false\">Completed</a></li>
                 ";
                     }
                     else{
@@ -79,6 +103,8 @@
                     </li>
                     <li role=\"presentation\"><a href=\"myrides.php?type=0\" aria-controls=\"recent-jobs\" role=\"tab\" data-toggle=\"tab\" class=\"active show\" aria-selected=\"false\">Pending/Upcoming</a></li>
                     <li role=\"presentation\"><a href=\"myrides.php?type=2\" aria-controls=\"recent-jobs\" role=\"tab\" data-toggle=\"tab\" class=\"\" aria-selected=\"false\">Rejected</a></li>
+                    <li role=\"presentation\"><a href=\"myrides.php?type=3\" aria-controls=\"recent-jobs\" role=\"tab\" data-toggle=\"tab\" class=\"\" aria-selected=\"false\">Picked</a></li>
+                    <li role=\"presentation\"><a href=\"myrides.php?type=4\" aria-controls=\"recent-jobs\" role=\"tab\" data-toggle=\"tab\" class=\"\" aria-selected=\"false\">Completed</a></li>
                 ";
                     }
                     ?>
@@ -91,7 +117,7 @@
                          
                             include '../../connection.php';
                             $userId= $_SESSION['userId'];
-                            $status = isset($_GET['type']) ? $_GET['type']: '0';;
+                            $status = isset($_GET['type']) ? $_GET['type']: '0';
                             $sql = "SELECT ride.id, ride.driver_id , 
                                     ride.rider_id,ride.status, 
                                     CONCAT(customer.first_name,' ',customer.last_name) AS customer_name,
@@ -127,9 +153,14 @@
                                }elseif ($row['status'] == '1'){
                                    echo "
                         <a href='acceptRide.php?rideId=$rideId&status=2&rider_id=$rider_id&cost=$cost_per_person&driver_id=$driver_id' class=\"btn btn-outline-danger\"><span>Reject</span> </a>
+                        <a href='acceptRide.php?rideId=$rideId&status=3&rider_id=$rider_id&cost=$cost_per_person&driver_id=$driver_id' class=\"btn btn-outline-success\"><span>Pick</span> </a>
+                    </div>";
+                               }elseif ($row['status'] == '3'){
+                                   echo "
+                        <a href='acceptRide.php?rideId=$rideId&status=4&rider_id=$rider_id&cost=$cost_per_person&driver_id=$driver_id' class=\"btn btn-outline-danger\"><span>Dropped</span> </a>
                     </div>";
                                }else{
-                                   echo "<a href='acceptRide.php?rideId=$rideId&status=1&rider_id=$rider_id&cost=$cost_per_person&driver_id=$driver_id' class=\"btn btn-primary\"><span>ACCEPT</span> </a>
+                                   echo "<a class=\"btn btn-primary-success\"><span>Completed</span> </a>
                     </div>";
                                }
 
