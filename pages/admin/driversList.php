@@ -73,6 +73,7 @@
                     <th scope="col">Cost Per Person</th>
                     <th scope="col">Wallet</th>
                     <th scope="col">Active Orders</th>
+                    <th scope="col">Proof</th>
                     <th scope="col">Action</th>
                 </tr>
                 </thead>
@@ -82,6 +83,7 @@
                     $result = mysqli_query($connection, $sql);
                     while($row = $result->fetch_assoc()){
                         $id= $row['id'];
+                        $fileName = '../../uploads/'.$row['fileName'];
                         if($row['status'] == 0) {
                             echo'<tbody>
                                     <tr>
@@ -97,6 +99,7 @@
                                         <td>'.$row['cost_per_person'].'</td>
                                         <td>'.$row['wallet'].'</td>
                                         <td>'.$row['active_orders'].'</td>
+                                     <td><a target="_blank" href="'.$fileName.'">'.$row['fileName'].'</a></td>
                                         <td>
                                         <div>
                                             <a href="approveDriver.php?driverId='.$id.'"  class="btn btn-outline-primary ml-3">Approve</a>
@@ -104,6 +107,7 @@
                                         </td>
                                     </tr>';
                         }else{
+
                             echo'<tbody>
                                     <tr>
                                         <th scope="row">'.$row['id'].'</th>
@@ -118,6 +122,7 @@
                                         <td>'.$row['cost_per_person'].'</td>
                                         <td>'.$row['wallet'].'</td>
                                         <td>'.$row['active_orders'].'</td>
+                                         <td><a target="_blank" href="'.$fileName.'">'.$row['fileName'].'</a></td>
                                         <td>
                                         <div>
                                             <a href="editDriver.php?driverId='.$id.'"  class="btn btn-outline-primary ml-3">Edit</a>
