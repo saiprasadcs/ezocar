@@ -75,9 +75,6 @@ form{
     background-color: #f3c693e1;
     color:black;
 }
-/*///*/
-
-
 /*///nav bar*/
 
 @import url('https://fonts.googleapis.com/css?family=Roboto');
@@ -295,15 +292,8 @@ i {
     transform: translateY(-10px);
 }
 .home2-choose-area .single-choose:hover .icon i {
-    /*color: #1d42d9 !important;*/
     color:rgba(0, 0, 0, 0.9) !important;
 }
-/*@media (min-width: 992px){*/
-/*    .col-lg-2 {*/
-/*        flex: 0 0 auto;*/
-/*        width: 16.66666667%;*/
-/*    }*/
-/*}*/
 
 .home2-choose-area .single-choose h5 {
     text-align: center;

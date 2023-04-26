@@ -65,8 +65,8 @@
                                         $id = $_SESSION['userId'];
                                         $sql = "SELECT *,CONCAT(last_name,' ',first_name) AS fullName 
                                                 FROM driver where id='$id'";
-                                        $result = mysqli_query($connection, $sql);
-                                        while($row = $result->fetch_assoc()){
+                                        $result = $connection->query($sql);
+                                        while($row = $result->fetch(PDO::FETCH_ASSOC)){
                                         ?>
                                         <?php echo $row['first_name'];?>
                                     </h5>
@@ -81,12 +81,39 @@
                                             <button type="submit" class="btn btn-primary">Add Money</button>
                                         </div>
                                     </form>
+
+                                    <hr>
+                                    <div class="row">
+                                        <div>
+                                            <h6>Update Proof</h6>
+                                            <form action="updateProof.php?userId=<?php echo $_SESSION['userId']?>"
+                                                  method="POST" enctype="multipart/form-data">
+                                                <input  type="file" name="file" id="file"  required>
+                                                <div class="d-flex justify-content-center mb-2 mt-2">
+                                                    <button type="submit" class="btn btn-primary">Update</button>
+                                                </div>
+                                            </form>
+                                            <?php
+                                            $fileName = '../../uploads/'.$row['fileName'];
+                                            echo '<img style="height: 256px;width: 100%;cursor:pointer;" src="'.$fileName.'">';
+                                            echo '<br>';?>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-8">
                             <div class="card mb-4">
                                 <div class="card-body">
+                                    <div class="row d-flex justify-content-end mr-4">
+                                        <div class="d-flex justify-content-center mb-2 mt-2">
+                                            <?php
+                                            $id = $_SESSION['userId'];
+                                            echo '<a href="editDriver.php?driverId='.$id.'" class="btn btn-primary">Edit Profile</a>';
+                                            ?>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <p class="mb-0">Full Name</p>
@@ -115,6 +142,19 @@
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-3">
+                                            <p class="mb-0">Company</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0">
+                                                <?php echo $row['company'];
+                                                echo '<br>';?>
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
                                             <p class="mb-0">Phone</p>
                                         </div>
                                         <div class="col-sm-9">
@@ -135,6 +175,133 @@
                                             <p class="text-muted mb-0">
                                                 <?php
                                                 echo $row['vehicle_number'];
+                                                echo '<br>';?>
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Licence Number</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0">
+                                                <?php
+                                                echo $row['licence_number'];
+                                                echo '<br>';?>
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Pickup From</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0">
+                                                <?php
+                                                echo $row['pickup_from'];
+                                                echo '<br>';?>
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Pickup To</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0">
+                                                <?php
+                                                echo $row['pickup_to'];
+                                                echo '<br>';?>
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Capacity</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0">
+                                                <?php
+                                                echo $row['capacity'];
+                                                echo '<br>';?>
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Cost (per person)</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0">
+                                                <?php
+                                                echo $row['cost_per_person'];
+                                                echo '<br>';?>
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Phone</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0">
+                                                <?php
+                                                echo $row['phoneno'];
+                                                echo '<br>';?>
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Start Time</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0">
+                                                <?php
+                                                echo $row['startTime'];
+                                                echo '<br>';?>
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">End Time</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0">
+                                                <?php
+                                                echo $row['endTime'];
+                                                echo '<br>';?>
+                                            </p>
+
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <p class="mb-0">Proof</p>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <p class="text-muted mb-0">
+                                                <?php
+                                                $fileName = '../../uploads/'.$row['fileName'];
+                                                echo '<a target="_blank" href="'.$fileName.'">'.$row['fileName'].'</a>';
                                                 echo '<br>';?>
                                             </p>
 

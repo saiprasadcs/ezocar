@@ -20,9 +20,6 @@
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
         <div class="d-flex align-items-center">
-<!--            <a class="text-reset me-3" href="#">-->
-<!--                <li><a  href=""><i class="fas fa-tachometer-alt"></i>Dashboard</a> </li>-->
-<!--            </a>-->
             <a class="text-reset me-3" href="#">
                 <li><a  href="myrides.php" style="    text-decoration: underline;" ><i class="far fa-address-book"></i>My Rides</a></li>
             </a>
@@ -42,7 +39,6 @@
         </div>
     </div>
 </nav>
-
 
 <section class="mt-5">
     <div class="tr-job-posted section-padding">
@@ -128,12 +124,9 @@
                                     LEFT JOIN driver ON ride.driver_id = driver.id
                                     WHERE driver_id='$userId' AND ride.status='$status'";
                             $result = $connection->query($sql);
-                            if($result)
-                            {
-                                if($result->num_rows > 0)
+                                if($result)
                                 {
-                                    while($row = $result->fetch_assoc())
-                                    {
+                                    while($row = $result->fetch(PDO::FETCH_ASSOC)){
                                         $rideId = $row['id'];
                                         $cost_per_person = $row['cost_per_person'];
                                         $rider_id = $row['rider_id'];
@@ -165,7 +158,8 @@
                                }
 
                    echo"<div class=\"mt-5\">
-                        <h3 class=\"heading\">".$row['pickup_from']."-<br>".$row['pickup_to']."</h3>
+                        <h5 class=\"heading\">£".$row['cost_per_person']."</h5>
+                        <h3 class=\"heading\">".$row['pickup_from']." to ".$row['pickup_to']."</h3>
                         <div class=\"mt-5\">
                             <div class=\"progress\">
                                 <div class=\"progress-bar\" role=\"progressbar\" style=\"width: 20%\" aria-valuenow=\"3\" aria-valuemin=\"0\" aria-valuemax=\"5\"></div>
@@ -182,11 +176,6 @@
                                 {
                                     echo "No DATA Found";
                                 }
-                            }
-                            else
-                            {
-                                return $result->error;
-                            }
                             ?>
                         </div><!-- /.row -->
                     </div><!-- /.tab-pane -->

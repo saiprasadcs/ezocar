@@ -128,9 +128,9 @@ include("../../connection.php");
                                     LEFT JOIN driver ON ride.driver_id = driver.id
                                     WHERE rider_id='$userId' AND driver.status=1 AND ride.status='$status'";
                             $result = $connection->query($sql);
-                            if($result) {
-                                if($result->num_rows > 0) {
-                                    while($row = $result->fetch_assoc()) {
+                                if($result)
+                                {
+                                    while($row = $result->fetch(PDO::FETCH_ASSOC)){
                                         $rideId = $row['id'];
                                         if($status == '1' || $status == '2' || $status == '3' || $status == '0' ){
                                             echo "<div class=\"col-md-4\">
@@ -144,7 +144,9 @@ include("../../connection.php");
                         <a  class=\"btn btn-primary custom-btn\" href='cancelRide.php?rideId=$rideId'> <span>Cancel Ride</span> </a>
                     </div>
                     <div class=\"mt-5\">
-                        <h3 class=\"heading\">".$row['pickup_from']."-<br>".$row['pickup_to']."</h3>
+                     <h5 class=\"heading\">£".$row['cost_per_person']."</h5>
+                        <h3 class=\"heading\">".$row['pickup_from']." to ".$row['pickup_to']."</h3>
+            
                         <div class=\"mt-5\">
                             <div class=\"progress\">
                                 <div class=\"progress-bar\" role=\"progressbar\" style=\"width: 20%\" aria-valuenow=\"3\" aria-valuemin=\"0\" aria-valuemax=\"5\"></div>
@@ -167,7 +169,8 @@ include("../../connection.php");
                         <a  class=\"btn btn-primary custom-btn\"> <span>Completed</span> </a>
                     </div>
                     <div class=\"mt-5\">
-                        <h3 class=\"heading\">".$row['pickup_from']."-<br>".$row['pickup_to']."</h3>
+                     <h5 class=\"heading\">£".$row['cost_per_person']."</h5>
+                        <h3 class=\"heading\">".$row['pickup_from']." to ".$row['pickup_to']."</h3>
                         <div class=\"mt-5\">
                             <div class=\"progress\">
                                 <div class=\"progress-bar\" role=\"progressbar\" style=\"width: 20%\" aria-valuenow=\"3\" aria-valuemin=\"0\" aria-valuemax=\"5\"></div>
@@ -186,7 +189,6 @@ include("../../connection.php");
                                 }else{
                                     echo "No Data Available";
                                 }
-                            }
                             ?>
                         </div><!-- /.row -->
                     </div><!-- /.tab-pane -->

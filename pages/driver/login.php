@@ -5,14 +5,18 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
         $sql = "SELECT * FROM driver WHERE email='$username' AND password='$password'";
-        $result = mysqli_query($connection, $sql);
-        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-        $count = mysqli_num_rows($result);
+
+
+        $result = $connection->query($sql);
+        $row = $result->fetchAll(PDO::FETCH_ASSOC);
+        $count = COUNT($row);
+
+
         if($count == 1){
-            if ($row['status'] == 1){
-                $_SESSION['userId']= $row['id'];
-                $id = $row['id'];
-                $_SESSION['userName'] = $row['first_name'].' '.$row['last_name'];
+            if ($row[0]['status'] == 1){
+                $_SESSION['userId']= $row[0]['id'];
+                $id = $row[0]['id'];
+                $_SESSION['userName'] = $row[0]['first_name'].' '.$row[0]['last_name'];
                 header("Location:myrides.php?userId=$id");
             }else{
                 echo '<script>

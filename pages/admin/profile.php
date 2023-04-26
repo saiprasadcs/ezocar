@@ -21,10 +21,10 @@ session_start();
                 <li><a href="dashboard.php" style="font-size:17.5px"><i class="fas fa-tachometer-alt" style="margin:0px 5px;font-size:17.5px"></i>Dashboard</a> </li>
             </a>
             <a class="text-reset me-3" href="#">
-                <li><a href="driversList.php" style="font-size:17.5px"><img src="../../assets/driver.png" style="width:20px;color:white;margin:0px 5PX;" alt="Driver">Drivers</a></li>
+                <li><a href="driversList.php" style="font-size:17.5px"><i class="fas fa-car-alt" style="margin:0px 5px;font-size:17.5px"></i>Drivers</a></li>
             </a>
             <a class="text-reset me-3" href="#">
-                <li><a href="customerList.php" style="font-size:17.5px"><img src="../../assets/customer.png" style="width:20px;color:white;margin:0px 5PX;" alt="Driver">Customers</a></li>
+                <li><a href="customerList.php" style="font-size:17.5px"><i class="fas fa-people-carry" style="margin:0px 5px;font-size:17.5px"></i>Customers</a></li>
             </a>
             <a class="text-reset me-3" href="#">
                 <li><a  href="profile.php" style="text-decoration: underline"><i class="far fa-clone"></i>My Profile</a></li>
@@ -71,8 +71,8 @@ session_start();
                                         $id = $_SESSION['userId'];
                                         $sql = "SELECT *,CONCAT(last_name,' ',first_name) AS fullName 
                                                 FROM superadminlogin where id='$id'";
-                                        $result = mysqli_query($connection, $sql);
-                                        while($row = $result->fetch_assoc()){
+                                        $result = $connection->query($sql);
+                                        while($row = $result->fetch(PDO::FETCH_ASSOC)){
                                         ?>
                                         <?php echo $row['first_name'].' '.$row['last_name'];?>
                                     </h5>

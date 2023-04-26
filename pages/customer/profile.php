@@ -72,8 +72,8 @@ session_start();
                                         $id = $_SESSION['userId'];
                                         $sql = "SELECT * , CONCAT(last_name,' ',first_name) AS fullName 
                                                 FROM customer where id='$id'";
-                                        $result = mysqli_query($connection, $sql);
-                                        while($row = $result->fetch_assoc()){
+                                        $result = $connection->query($sql);
+                                        while($row = $result->fetch(PDO::FETCH_ASSOC)){
                                         ?>
                                         <?php echo $row['first_name'];?>
                                     </h5>
@@ -96,6 +96,14 @@ session_start();
                         <div class="col-lg-8">
                             <div class="card mb-4">
                                 <div class="card-body">
+                                    <div class="row d-flex justify-content-end mr-4">
+                                        <div class="d-flex justify-content-center mb-2 mt-2">
+                                            <?php
+                                            $id = $_SESSION['userId'];
+                                            echo '<a href="editCustomer.php?customerId='.$id.'" class="btn btn-primary">Edit Profile</a>';
+                                            ?>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <p class="mb-0">Full Name</p>

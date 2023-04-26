@@ -1,16 +1,15 @@
+/*nav bar design codes*/
 li {
     list-style-type: none !important;
     margin-left: 30px;
 }
 nav{
     padding: 22px 20px 22px 13px !important;
-    /*background-color: #17a2b8 !important;*/
     background-color: rgba(0, 0, 0, 0.9) !important;
     color: #F3C693 !important;
 }
 
 nav a {
-    /*color: black !important;*/
     color: #F3C693 !important;
     text-decoration: none;
     background-color: transparent;

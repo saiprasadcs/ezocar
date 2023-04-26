@@ -1,12 +1,12 @@
 <?php
-$severname = 'localhost';
-$username = 'root';
+$dsn = "mysql:host=localhost;dbname=ezocar;charset=UTF8";
+$user = 'root';
 $password = 'root';
-$database = 'ezocar';
-
-$connection = mysqli_connect($severname, $username, $password, $database);
-//  if(!$connection){
-//      die("Error ! ".mysqli_connect_error());
-//  }else{
-//      echo "DataBase Connected SuccessFully";
-//  }
+try {
+    $connection = new PDO($dsn, $user, $password);
+    $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo 'Connection failed: ' . $e->getMessage();
+    die('Sorry, database problem');
+}
+?>

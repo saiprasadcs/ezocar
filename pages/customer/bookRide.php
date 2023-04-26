@@ -46,25 +46,28 @@
             include '../../connection.php';
             $sql = "SELECT * FROM `driver` where status=1";
             $result = $connection->query($sql);
+            $resultCount = COUNT($result->fetch(PDO::FETCH_ASSOC));
+
             if($result)
             {
-                if($result->num_rows > 0)
+                if($resultCount > 0)
                 {
-                    while($row = $result->fetch_assoc())
-                    {
+                    while($row = $result->fetch(PDO::FETCH_ASSOC)){
                             $id = $row['id'];
                             echo "<div class=\"col-md-4\">
                 <div class=\"card p-3 mb-2\">
                     <div class=\"d-flex justify-content-between\">
                         <div class=\"d-flex flex-row align-items-center\">
                             <div class=\"ms-2 c-details\">
-                                <h6 class=\"mb-0\">".$row['first_name'].' '.$row['last_name']."</h6> <span>TN06H2323</span>
+                                <h6 class=\"mb-0\">".$row['first_name'].' '.$row['last_name']."</h6> <span>".$row['vehicle_number']."</span>
                             </div>
                         </div>
                         <a  class=\"btn btn-primary\" href='bookCar.php?driverId=$id'> <span>Book</span> </a>
                     </div>
                     <div class=\"mt-5\">
-                        <h3 class=\"heading\">".$row['pickup_from']." To<br>".$row['pickup_to']."</h3>
+                     <h5 class=\"heading\">£".$row['cost_per_person']."</h5>
+                        <h3 class=\"heading\">".$row['pickup_from']." to ".$row['pickup_to']."</h3>
+                
                         <div class=\"mt-5\">
                             <div class=\"progress\">
                                 <div class=\"progress-bar\" role=\"progressbar\" style=\"width: 20%\" aria-valuenow=\"3\" aria-valuemin=\"0\" aria-valuemax=\"5\"></div>

@@ -20,10 +20,10 @@
                 <li><a href="dashboard.php" style="font-size:17.5px"><i class="fas fa-tachometer-alt" style="margin:0px 5px;font-size:17.5px"></i>Dashboard</a> </li>
             </a>
             <a class="text-reset me-3" href="#">
-                <li><a href="driversList.php" style="font-size:17.5px"><img src="../../assets/driver.png" style="width:20px;color:white;margin:0px 5PX;" alt="Driver">Drivers</a></li>
+                <li><a href="driversList.php" style="font-size:17.5px"><i class="fas fa-car-alt" style="margin:0px 5px;font-size:17.5px"></i>Drivers</a></li>
             </a>
             <a class="text-reset me-3" href="#">
-                <li><a href="customerList.php" style="font-size:17.5px;text-decoration: underline"><img src="../../assets/customer.png" style="width:20px;color:white;margin:0px 5PX;" alt="Driver">Customers</a></li>
+                <li><a href="customerList.php" style="font-size:17.5px;text-decoration: underline"><i class="fas fa-people-carry" style="margin:0px 5px;font-size:17.5px"></i>Customers</a></li>
             </a>
             <a class="text-reset me-3" href="#">
                 <li><a  href="profile.php"><i class="far fa-clone"></i>My Profile</a></li>
@@ -69,15 +69,20 @@
                 </thead>
                 <tbody>
                     <?php
+                    if (isset($_GET['status'])){
+                        $status=$_GET['status'];
+                        $sql = "SELECT * FROM customer WHERE status='$status'";
+                    }else{
                         $sql = "SELECT * FROM customer";
-                        $result = mysqli_query($connection, $sql);
-                        while($row = $result->fetch_assoc()){
+                    }
+                        $result = $connection->query($sql);
+                        while($row = $result->fetch(PDO::FETCH_ASSOC)){
                             $id = $row['id'];
                             if ($row['status'] == 1){
                                 echo'<tbody>
                                         <tr>
                                             <th scope="row">'.$row['id'].'</th>
-                                                <td>'.$row['first_name'].'</td>
+                                                <td><a href="viewHistory.php?id='.$row['id'].'?username='.$row['first_name'].'">'.$row['first_name'].'</a></td>
                                                 <td>'.$row['last_name'].'</td>
                                                 <td>'.$row['phoneno'].'</td>
                                                 <td>'.$row['email'].'</td>

@@ -21,20 +21,21 @@ $_SESSION['driverId']=$_GET['driverId'];
     <div class="container-fluid">
         <div class="d-flex align-items-center">
             <a class="text-reset me-3" href="#">
-                <li><a href="dashboard.php" style="font-size:17.5px"><i class="fas fa-tachometer-alt" style="margin:0px 5px;font-size:17.5px"></i>Dashboard</a> </li>
-            </a>
-            <a class="text-reset me-3" href="#">
-                <li><a href="driversList.php" style="font-size:17.5px"><i class="fas fa-car-alt" style="margin:0px 5px;font-size:17.5px"></i>Drivers</a></li>
-            </a>
-            <a class="text-reset me-3" href="#">
-                <li><a href="customerList.php" style="font-size:17.5px"><i class="fas fa-people-carry" style="margin:0px 5px;font-size:17.5px"></i>Customers</a></li>
+                <li><a  href="myrides.php" style="    text-decoration: underline;" ><i class="far fa-address-book"></i>My Rides</a></li>
             </a>
             <a class="text-reset me-3" href="#">
                 <li><a  href="profile.php"><i class="far fa-clone"></i>My Profile</a></li>
             </a>
             <a class="text-reset me-3" href="#">
-                <li><a href="../../" style="font-size:17.5px">Log Out</a></li>
+                <li><a style="" href="../../">Log Out</a></li>
             </a>
+        </div>
+        <div>
+            <?php
+            session_start();
+            $name =$_SESSION['userName'];
+            echo "$name"
+            ?>
         </div>
     </div>
 </nav>
@@ -92,11 +93,11 @@ $_SESSION['driverId']=$_GET['driverId'];
                                                     <label for=\"\" style=\"display:block;font-size:17.5px;margin:5px auto\">Email Id</label>
                                                     <input  class=\"form-control form-control-lg\" value='$email' name=\"email\" type=\"email\" placeholder=\"Email Id\" >
                                                 </div>
-                                            </div>     
-                                            <div class=\"col-md-4 mb-4\">
+                                            </div>  
+                                              <div class=\"col-md-4 mb-4\">
                                                 <div class=\"form-outline\">
                                                     <label for=\"\" style=\"display:block;font-size:17.5px;margin:5px auto\">Company Name</label>
-                                                    <input  class=\"form-control form-control-lg\" value='$email' name=\"company\" type=\"text\" placeholder=\"Company Name\" >
+                                                    <input  class=\"form-control form-control-lg\" value='$company' name=\"company\" type=\"text\" placeholder=\"Company\" >
                                                 </div>
                                             </div>
                                         </div>
@@ -172,18 +173,23 @@ $_SESSION['driverId']=$_GET['driverId'];
                                                     <input  class=\"form-control form-control-lg\" value='$modal' name=\"modal\" type=\"text\" placeholder=\"Model\" >
                                                 </div>
                                             </div>
+                                            
                                         </div>
 
                                         <div class=\"d-flex justify-content-end pt-3\">
-                                            <a href=\"./driversList.php\"  type=\"button\" class=\"btn btn-light btn-lg\">Back</a>
+                                            <a href=\"./profile.php\"  type=\"button\" class=\"btn btn-light btn-lg\">Back</a>
                                             <button type=\"submit\" class=\"btn btn-primary btn-lg ms-2\">Submit</button>
                                         </div>
 
                                     </div>
                                 </form>";
                                         }
+
                                 ?>
                             </div>
+
+                        </div>
+                    </div>
                         </div>
                     </div>
                 </div>

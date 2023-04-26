@@ -18,21 +18,21 @@ if (isset($_POST['first_name'])) {
     $pickup_from = $_POST['pickup_from'];
     $pickup_to = $_POST['pickup_to'];
     $wallet = $_POST['wallet'];
-    $company = $_POST['company'];
     $cost_per_person = $_POST['cost_per_person'];
+    $company = $_POST['company'];
     $id = $_SESSION['driverId'];
 
     $sql = "UPDATE driver SET role_id='$role_id',first_name='$firstName',last_name='$lastName',email='$email',phoneno='$phoneno',
                     vehicle_number='$vehicle_number',licence_number='$licence_number',modal='$modal',capacity='$capacity',
                     pickup_from='$pickup_from',pickup_to='$pickup_to', cost_per_person='$cost_per_person',wallet ='$wallet',
-                    startTime='$startTime', endTime='$endTime' , company='$company'
+                    startTime='$startTime', endTime='$endTime', company='$company'
                      WHERE id='$id'";
 
     $result = $connection->query($sql);
     if ($result) {
         echo "<div class='form'>
                   <h3>Updated SuccessFully</h3><br/>
-                  <p class='link'>Click here to <a href='./driversList.php'>Driver</a> again.</p>
+                  <p class='link'>Click here to <a href='./profile.php'>Driver</a> again.</p>
                   </div>";
     } else {
         echo "<div class='form'>

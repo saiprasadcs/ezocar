@@ -20,21 +20,28 @@ $_SESSION['customerId']=$_GET['customerId'];
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
         <div class="d-flex align-items-center">
+            <!--            <a class="text-reset me-3" href="#">-->
+            <!--                <li><a  href=""><i class="fas fa-tachometer-alt"></i>Dashboard</a> </li>-->
+            <!--            </a>-->
             <a class="text-reset me-3" href="#">
-                <li><a href="dashboard.php" style="font-size:17.5px"><i class="fas fa-tachometer-alt" style="margin:0px 5px;font-size:17.5px"></i>Dashboard</a> </li>
+                <li><a  href="myrides.php" style="    text-decoration: underline;" ><i class="far fa-address-book"></i>My Rides</a></li>
             </a>
             <a class="text-reset me-3" href="#">
-                <li><a href="driversList.php" style="font-size:17.5px"><i class="fas fa-car-alt" style="margin:0px 5px;font-size:17.5px"></i>Drivers</a></li>
-            </a>
-            <a class="text-reset me-3" href="#">
-                <li><a href="customerList.php" style="font-size:17.5px"><i class="fas fa-people-carry" style="margin:0px 5px;font-size:17.5px"></i>Customers</a></li>
+                <li><a  href="bookRide.php"><i class="far fa-clone"></i>Book Ride</a></li>
             </a>
             <a class="text-reset me-3" href="#">
                 <li><a  href="profile.php"><i class="far fa-clone"></i>My Profile</a></li>
             </a>
             <a class="text-reset me-3" href="#">
-                <li><a href="../../" style="font-size:17.5px">Log Out</a></li>
+                <li><a style="" href="../../">Log Out</a></li>
             </a>
+        </div>
+        <div>
+            <?php
+            session_start();
+            $name =$_SESSION['userName'];
+            echo "$name"
+            ?>
         </div>
     </div>
 </nav>
@@ -101,13 +108,14 @@ $_SESSION['customerId']=$_GET['customerId'];
                                         </div>
 
                                         <div class=\"d-flex justify-content-end pt-3\">
-                                            <a href=\"./customerList.php\"  type=\"button\" class=\"btn btn-light btn-lg\">Back</a>
+                                            <a href=\"./profile.php\"  type=\"button\" class=\"btn btn-light btn-lg\">Back</a>
                                             <button type=\"submit\" class=\"btn btn-primary btn-lg ms-2\">Update form</button>
                                         </div>
 
                                     </div>
                                 </form>";
                                         }
+
 
                                 ?>
 

@@ -20,10 +20,10 @@
                 <li><a href="dashboard.php" style="font-size:17.5px"><i class="fas fa-tachometer-alt" style="margin:0px 5px;font-size:17.5px"></i>Dashboard</a> </li>
             </a>
             <a class="text-reset me-3" href="#">
-                <li><a href="driversList.php" style="font-size:17.5px"><img src="../../assets/driver.png" style="width:20px;color:white;margin:0px 5PX;" alt="Driver">Drivers</a></li>
+                <li><a href="driversList.php" style="font-size:17.5px"><i class="fas fa-car-alt" style="margin:0px 5px;font-size:17.5px"></i>Drivers</a></li>
             </a>
             <a class="text-reset me-3" href="#">
-                <li><a href="customerList.php" style="font-size:17.5px"><img src="../../assets/customer.png" style="width:20px;color:white;margin:0px 5PX;" alt="Driver">Customers</a></li>
+                <li><a href="customerList.php" style="font-size:17.5px"><i class="fas fa-people-carry" style="margin:0px 5px;font-size:17.5px"></i>Customers</a></li>
             </a>
             <a class="text-reset me-3" href="#">
                 <li><a  href="profile.php"><i class="far fa-clone"></i>My Profile</a></li>
@@ -51,19 +51,25 @@
                                             <div class="col-md-4 mb-4">
                                                 <div class="form-outline">
                                                     <label class="form-label" for="form3Example1m">First name</label>
-                                                    <input type="text" id="first_name" name="first_name" class="form-control form-control-lg" />
+                                                    <input required type="text" id="first_name" name="first_name" class="form-control form-control-lg" />
                                                 </div>
                                             </div>
                                             <div class="col-md-4 mb-4">
                                                 <div class="form-outline">
                                                     <label class="form-label" for="form3Example1m">Last name</label>
-                                                    <input type="text" id="last_name" name="last_name" class="form-control form-control-lg" />
+                                                    <input type="text" id="last_name" name="last_name" class="form-control form-control-lg" required/>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 mb-4">
                                                 <div class="form-outline">
                                                     <label for="" style="display:block;font-size:17.5px;margin:5px auto">Email Id</label>
-                                                    <input  class="form-control form-control-lg" name="email" type="email" placeholder="Email Id" >
+                                                    <input  class="form-control form-control-lg" name="email" type="email" placeholder="Email Id" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 mb-4">
+                                                <div class="form-outline">
+                                                    <label for="" style="display:block;font-size:17.5px;margin:5px auto">Company Name</label>
+                                                    <input  class="form-control form-control-lg" name="company" type="text" placeholder="Company Name" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -71,13 +77,13 @@
                                             <div class="col-md-4 mb-4">
                                                 <div class="form-outline">
                                                     <label for="" style="display:block;font-size:17.5px;margin:5px auto">Password</label>
-                                                    <input  class="form-control form-control-lg" name="password" type="Password" placeholder="Password">
+                                                    <input  class="form-control form-control-lg" name="password" type="Password" placeholder="Password" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 mb-4">
                                                 <div class="form-outline mb-4">
                                                     <label for="" style="display:block;font-size:17.5px;margin:5px auto">Confirm Password</label>
-                                                    <input  class="form-control form-control-lg" name="cpassword" type="Password" placeholder="Confirm Password" >
+                                                    <input  class="form-control form-control-lg" name="cpassword" type="Password" placeholder="Confirm Password" required>
                                                 </div>
                                             </div>
 
@@ -86,19 +92,19 @@
                                             <div class="col-md-4 mb-4">
                                                 <div class="form-outline mb-4">
                                                     <label for="" style="display:block;font-size:17.5px;margin:5px auto">Vehicle Number</label>
-                                                    <input  class="form-control form-control-lg" name="vehicle_number" type="text" placeholder="Vehicle Number" >
+                                                    <input  class="form-control form-control-lg" name="vehicle_number" type="text" placeholder="Vehicle Number" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 mb-4">
                                                 <div class="form-outline mb-4">
                                                     <label for="" style="display:block;font-size:17.5px;margin:5px auto">License Number</label>
-                                                    <input  class="form-control form-control-lg" name="licence_number" type="text" placeholder="License Number" >
+                                                    <input  class="form-control form-control-lg" name="licence_number" type="text" placeholder="License Number" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 mb-4">
                                                 <div class="form-outline mb-4">
                                                     <label for="" style="display:block;font-size:17.5px;margin:5px auto">Pick Up From</label>
-                                                    <input  class="form-control form-control-lg" name="pickup_from" type="text" placeholder="Pick Up From" >
+                                                    <input  class="form-control form-control-lg" name="pickup_from" type="text" placeholder="Pick Up From" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -107,19 +113,31 @@
                                             <div class="col-md-4 mb-4">
                                                 <div class="form-outline mb-4">
                                                     <label for="" style="display:block;font-size:17.5px;margin:5px auto">Pick Up To</label>
-                                                    <input  class="form-control form-control-lg" name="pickup_to" type="text" placeholder="Pick Up To" >
+                                                    <input  class="form-control form-control-lg" name="pickup_to" type="text" placeholder="Pick Up To" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 mb-4">
+                                                <div class="form-outline mb-4">
+                                                    <label for="" style="display:block;font-size:17.5px;margin:5px auto">Start Time</label>
+                                                    <input  class="form-control form-control-lg" name="startTime" type="time" placeholder="Start Time" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 mb-4">
+                                                <div class="form-outline mb-4">
+                                                    <label for="" style="display:block;font-size:17.5px;margin:5px auto">End Time</label>
+                                                    <input  class="form-control form-control-lg" name="endTime" type="time" placeholder="End Time" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 mb-4">
                                                 <div class="form-outline mb-4">
                                                     <label for="" style="display:block;font-size:17.5px;margin:5px auto">Capacity</label>
-                                                    <input  class="form-control form-control-lg" name="capacity" type="number" placeholder="Capacity" >
+                                                    <input  class="form-control form-control-lg" name="capacity" type="number" placeholder="Capacity" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 mb-4">
                                                 <div class="form-outline mb-4">
                                                     <label for="" style="display:block;font-size:17.5px;margin:5px auto">Cost Per person</label>
-                                                    <input  class="form-control form-control-lg" name="cost_per_person" type="number" placeholder="Cost Per person" >
+                                                    <input  class="form-control form-control-lg" name="cost_per_person" type="number" placeholder="Cost Per person" required>
                                                 </div>
                                             </div>
                                         </div>
@@ -133,13 +151,13 @@
                                             <div class="col-md-4 mb-4">
                                                 <div class="form-outline mb-4">
                                                     <label for="" style="display:block;font-size:17.5px;margin:5px auto">Phone Number</label>
-                                                    <input  class="form-control form-control-lg" name="phoneno" type="text" placeholder="Phone Number" >
+                                                    <input  class="form-control form-control-lg" name="phoneno" type="number" placeholder="Phone Number" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 mb-4">
                                                 <div class="form-outline mb-4">
                                                     <label for="" style="display:block;font-size:17.5px;margin:5px auto">Model</label>
-                                                    <input  class="form-control form-control-lg" name="modal" type="text" placeholder="Model" >
+                                                    <input  class="form-control form-control-lg" name="modal" type="text" placeholder="Model" required>
                                                 </div>
                                             </div>
                                         </div>

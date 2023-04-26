@@ -9,17 +9,17 @@ if (isset($_GET['driverId'])) {
     //check previous booking DATA
     //GET DRIVER DATA
     $getDriverSQL = "SELECT * FROM driver WHERE id ='$driverId'";
-    $getDriverSQLResult = mysqli_query($connection, $getDriverSQL);
-    $getDriverSQLResultRow = mysqli_fetch_array($getDriverSQLResult, MYSQLI_ASSOC);
-    if ($getDriverSQLResult->num_rows >= 1 && ($getDriverSQLResultRow['occupied'] < $getDriverSQLResultRow['capacity'])){
+    $getDriverSQLResult = $connection->query($getDriverSQL);
+    $getDriverSQLResultRow = $getDriverSQLResult->fetchAll(PDO::FETCH_ASSOC);
+    if (COUNT($getDriverSQLResultRow) >= 1 && ($getDriverSQLResultRow[0]['occupied'] < $getDriverSQLResultRow[0]['capacity'])){
             //get customer DATA
             $getCustomerSql =  "SELECT * FROM customer WHERE id ='$id'";
-            $getCustomerSqlResult = mysqli_query($connection, $getCustomerSql);
-            $getCustomerSqlResultRow = mysqli_fetch_array($getCustomerSqlResult, MYSQLI_ASSOC);
-            if ($getDriverSQLResult->num_rows >= 1 && ($getCustomerSqlResultRow['wallet'] > $getDriverSQLResultRow['cost_per_person'])) {
+            $getCustomerSqlResult = $connection->query($getCustomerSql);
+            $getCustomerSqlResultRow = $getCustomerSqlResult->fetchAll(PDO::FETCH_ASSOC);
+            if (COUNT($getDriverSQLResultRow) >= 1 && ($getCustomerSqlResultRow[0]['wallet'] > $getDriverSQLResultRow[0]['cost_per_person'])) {
                 //update into rides
                 $sql = "INSERT INTO rides (driver_id , rider_name , rider_id) VALUES ('$driverId' , '$name', '$id')";
-                $result = mysqli_query($connection, $sql);
+                $result = $connection->query($sql);
                 if($result) {
                     echo "<div class='form'>
                  <h3>Booked SuccessFully</h3><br/>

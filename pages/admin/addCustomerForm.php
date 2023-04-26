@@ -10,8 +10,9 @@ if (isset($_POST['first_name'])) {
     $password = $_POST['password'];
     $cpassword = $_POST['cpassword'];
     $checkUser  = "SELECT email FROM customer WHERE email='$email'";
-    $checkUserResult   = mysqli_query($connection, $checkUser);
-    if ($checkUserResult->num_rows >= 1){
+        $checkUserResult = $connection->query($checkUser);
+        $checkUserResult = $checkUserResult->fetchAll(PDO::FETCH_ASSOC);
+        if (COUNT($checkUserResult) >= 1){
         echo "<div class='form'>
                   <h3>Email id Already Used</h3><br/>
                    <p class='link'>Click here to <a href='./addCustomer.php'>Add</a> again.</p>
@@ -20,7 +21,7 @@ if (isset($_POST['first_name'])) {
         if ($password == $cpassword) {
             $sql = "INSERT INTO customer (role_id, first_name, last_name, email, password, phoneno) 
                     VALUES('$roleId','$firstName', '$lastName', '$email', '$password', '$phoneno')";
-            $result = mysqli_query($connection, $sql);
+            $result = $connection->query($sql);
             if ($result) {
                 echo "<div class='form'>
                   <h3>Registered SuccessFully</h3><br/>

@@ -9,14 +9,15 @@ if (isset($_GET['rideId'])) {
     $driver_id = $_GET['driver_id'];
 
     $sql = "UPDATE rides SET status='$status' WHERE id ='$rideId'";
-    $result = mysqli_query($connection, $sql);
+    $result = $connection->query($sql);
+
     if ($result) {
         if ($status == '2'){
             $updateDriverSQL = "UPDATE driver SET wallet=wallet-$cost_per_person, occupied = occupied-1 WHERE id ='$driver_id'";
-            $updateDriverSQLResult = mysqli_query($connection, $updateDriverSQL);
+            $updateDriverSQLResult = $connection->query($updateDriverSQL);
             if ($updateDriverSQLResult){
                 $updateCustomerSQL =  "UPDATE customer SET wallet=wallet+$cost_per_person WHERE id ='$rider_id'";
-                $updateCustomerSQLResult = mysqli_query($connection, $updateCustomerSQL);
+                $updateCustomerSQLResult = $connection->query($updateCustomerSQL);
                 if($updateCustomerSQLResult){
                     header("Location:myrides.php?type=$status");
                 }else{
@@ -34,7 +35,7 @@ if (isset($_GET['rideId'])) {
             $updateDriverSQLResult = mysqli_query($connection, $updateDriverSQL);
             if ($updateDriverSQLResult){
                 $updateCustomerSQL =  "UPDATE customer SET wallet=wallet-$cost_per_person WHERE id ='$rider_id'";
-                $updateCustomerSQLResult = mysqli_query($connection, $updateCustomerSQL);
+                $updateCustomerSQLResult = $connection->query($updateCustomerSQL);
                 if($updateCustomerSQLResult){
                     header("Location:myrides.php?type=$status");
                 }else{

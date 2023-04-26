@@ -12,12 +12,11 @@ if (isset($_POST['first_name'])) {
     $id = $_SESSION['customerId'];
     $sql = "UPDATE customer SET role_id='$roleId',first_name='$firstName',last_name='$lastName',email='$email',
             phoneno='$phoneno', company='$company' WHERE id='$id'";
-
     $result = $connection->query($sql);
     if ($result) {
         echo "<div class='form'>
                   <h3>Updated SuccessFully</h3><br/>
-                  <p class='link'>Click here to <a href='./customerList.php'>Customer List</a> again.</p>
+                  <p class='link'>Click here to <a href='./profile.php'>Customer List</a> again.</p>
                   </div>";
     } else {
         echo "<div class='form'>
