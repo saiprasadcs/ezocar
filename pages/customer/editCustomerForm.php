@@ -3,14 +3,16 @@
 session_start();
 include("../../connection.php");
 if (isset($_POST['first_name'])) {
-    $roleId = 2;
+    // check if form data has been submitted
     $firstName = $_POST['first_name'];
     $lastName = $_POST['last_name'];
     $email = $_POST['email'];
     $phoneno = $_POST['phoneno'];
     $company= $_POST['company'];
     $id = $_SESSION['customerId'];
-    $sql = "UPDATE customer SET role_id='$roleId',first_name='$firstName',last_name='$lastName',email='$email',
+
+    // SQL query to update customer data
+    $sql = "UPDATE customer SET first_name='$firstName',last_name='$lastName',email='$email',
             phoneno='$phoneno', company='$company' WHERE id='$id'";
     $result = $connection->query($sql);
     if ($result) {

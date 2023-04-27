@@ -49,6 +49,8 @@
                             <p class="mb-1 w-50" style="font-size: 16px;">
                                 <a href="driversList.php">Total Drivers</a></p>
                             <p class="mb-1 text-end w-50" style="font-size: 16px;">
+
+<!-- fetching all total drivers data-->
                                 <?php
                                 include '../../connection.php';
                                 $sql = "SELECT * FROM `driver`";
@@ -59,6 +61,7 @@
                                     echo COUNT($result);
                                 }
                                 ?>
+                                <!-- fetching all total drivers data ends-->
                             </p>
                         </div>
                         <div class="progress rounded" style="height: 5px;">
@@ -79,6 +82,7 @@
                         <div class="row d-flex justifiy-content-end">
                             <p class="mb-1 w-50" style="font-size: 16px;"><a href="customerList.php">Total Customers</a></p>
                             <p class="mb-1 text-end w-50" style="font-size: 16px;">
+                                <!-- fetching all total customer data from customer-->
                                 <?php
                                 include '../../connection.php';
                                 $sql = "SELECT * FROM `customer`";
@@ -141,6 +145,7 @@
                         <div class="row d-flex justifiy-content-end">
                             <p class="mb-1 w-50" style="font-size: 16px;"><a href="driversList.php?status=1">Active Drivers</a></p>
                             <p class="mb-1 text-end w-50" style="font-size: 16px;">
+                                <!-- fetching all total ACTIVE drivers data-->
                                 <?php
                                 include '../../connection.php';
                                 $sql = "SELECT * FROM `driver` WHERE status=1";

@@ -1,26 +1,3 @@
-<?php
-// Include the connection file
-include("../../connection.php");
-
-// If the HTTP request method is POST
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Set the role ID to 3
-    $roleId = 3;
-
-    // Retrieve the user's first name, last name, email, and password from the form data
-    $firstName = $_POST['first_name'];
-    $lastName = $_POST['last_name'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    // Construct the SQL query to insert the user's information into the driver table
-    $sql = "INSERT INTO driver (role_id, first_name, last_name, email, password) 
-        VALUES('$roleId','$firstName', '$lastName', '$email', '$password')";
-
-    // Execute the SQL query and store the result
-    $result = mysqli_query($connection, $sql);
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     Register
                 </button>
             </div>
-
+<!--            driver login page code starts-->
             <form class="inputGroupLogin" id="login" action="login.php" method="POST" onsubmit="return validation()">
                 <div style="margin:20px 0px 0px 0px">
                     <input type="text" class="inputField" name="username" placeholder="Email Id">
@@ -60,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <button style="font-size:20px;" type="submit" class="submitBtn">Log In</button>
                 </div>
             </form>
+            <!--            driver login page code ends-->
 
             <form class="inputGroupLogin" id="backToHomePage" action="../.." method="POST"
                   style="left:50px;display:flex;align-items:center;text-align:center;jusitfy-content:center;margin:219px auto 0px auto ">
@@ -70,6 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </button>
                 </a>
             </form>
+
+            <!-- driver registration page code starts-->
 
             <form style="overflow-y: auto;height: 398px;"
                   class="inputGroupRegister" id="register" action="register.php"
@@ -122,6 +102,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     Register
                 </button>
             </form>
+            <!-- driver registration page code ends-->
+
 
         </div>
     </div>
@@ -129,41 +111,38 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <script>
     var b = document.getElementById("backToHomePage");
     var selectedField = document.getElementById("selectedField");
-    var x = document.getElementById('login');
-    var y = document.getElementById('register');
-    var z = document.getElementById('btn');
-
-    function register() {
-        b.style.left = '-400px';
-        x.style.left = '-400px';
-        y.style.left = '50px';
-        z.style.left = '110px';
+    var x=document.getElementById('login');
+    var y=document.getElementById('register');
+    var z=document.getElementById('btn');
+    function register(){
+        b.style.left='-900px';
+        x.style.left='-900px';
+        y.style.left='50px';
+        z.style.left='110px';
+    }
+    function login(){
+        b.style.left='100px';
+        x.style.left='100px';
+        y.style.left='900px';
+        z.style.left='0px';
     }
 
-    function login() {
-        b.style.left = '50px';
-        x.style.left = '50px';
-        y.style.left = '450px';
-        z.style.left = '0px';
-    }
-
-    function validation() {
+    function validation(){
         var username = document.login.username.value;
         var password = document.login.password.value;
-        if (username == "" && password == "") {
+        if(username == "" && password == ""){
             alert("Username and Password are Empty");
             return false;
-        } else {
-            if (username == "") {
+        }else{
+            if(username==""){
                 alert("Username is Empty");
                 return false;
-            } else if (password == "") {
+            }else if(password==""){
                 alert("Password is Empty");
                 return false;
             }
         }
     }
-
 </script>
 </body>
 </html>

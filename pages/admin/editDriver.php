@@ -163,7 +163,7 @@ $_SESSION['driverId']=$_GET['driverId'];
                                             <div class=\"col-md-4 mb-4\">
                                                 <div class=\"form-outline mb-4\">
                                                     <label for=\"\" style=\"display:block;font-size:17.5px;margin:5px auto\">Phone Number</label>
-                                                    <input  class=\"form-control form-control-lg\" value='$phoneno' name=\"phoneno\" type=\"text\" placeholder=\"Phone Number\" >
+                                                    <input  class=\"form-control form-control-lg\" value='$phoneno' name=\"phoneno\" type=\"number\" placeholder=\"Phone Number\" >
                                                 </div>
                                             </div>
                                             <div class=\"col-md-4 mb-4\">

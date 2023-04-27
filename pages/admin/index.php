@@ -1,7 +1,3 @@
-<?php include("../../connection.php");
-
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,6 +19,8 @@
 </style>
 <body>
 <div class="fullPage">
+
+<!--    admin login page design code starts-->
     <div class="loginPage" id="loginForm">
         <div class="formBox">
             <a href="dashboard.php" style="color:#F3C693;">Ezocar</a>
@@ -52,6 +50,7 @@
             </form>
         </div>
     </div>
+    <!--    admin login page design code starts-->
 </div>
 
 <script>

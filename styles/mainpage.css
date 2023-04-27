@@ -71,7 +71,7 @@ a{
     display: block;
 }
 .formBox{
-    width: 380px;
+    width: 50%;
     height: 520px;
     padding: 10px;
     margin:5% auto;
@@ -123,14 +123,14 @@ a{
 }
 .inputGroupLogin{
     top: 200px;
-    width: 280px;
+    width: 800px !important;
     margin:0px auto 0px auto;
     transition: .5s;
     position: absolute;
 }
 .inputGroupRegister{
     top:180px;
-    width: 280px;
+    width: 80%;
     transition: .5s;
     position: absolute;
 }
@@ -185,7 +185,7 @@ span{
     font-size:15px;
 }
 #register{
-    left:450px
+    left:900px
 }
 #register input{
     color:white;

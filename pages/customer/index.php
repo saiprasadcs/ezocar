@@ -19,6 +19,8 @@
                         <button style="margin:auto 2.5px" type="button" name="button" class="toggle-btn" onclick="login()">Log In</button>
                         <button style="margin:auto 2.5px" type="button" name="button" class="toggle-btn" onclick="register()">Register</button>
                     </div>
+
+<!--                    customer login page starts-->
                     <form class="inputGroupLogin" id="login" action="login.php" method="POST">
                         <div style="margin:10px 0px 0px 0px">
                             <input type="text" class="inputField" name="username" placeholder="Email Id" >
@@ -31,12 +33,15 @@
                         <button style="font-size:20px;padding:5px;margin:10px auto 0px auto;display:flex;text-align:center;justify-cotent:center;align-items:center" type="submit" style=""class="submitBtn">Log In</button>
                         </div>
                     </form>
+                    <!--                    customer login page ends-->
+
                     <form class="inputGroupLogin" id="backToHomePage" action="../.." method="POST" style="left:50px;display:flex;align-items:center;text-align:center;jusitfy-content:center;margin:250px auto 0px auto">
                         <a href="../../" style="text-decoration:none" style="padding:5px 15px;">
                         <button type="submit" class="submitBtn" style="font-size:12.5px;width:100%;margin:0px auto 0px auto">
                         Back To Home Page</button></a>
                     </form>
-    
+
+                    <!--                    customer registration page starts-->
                     <form class="inputGroupRegister" id="register" action="registerCustomer.php" method="POST" style="overflow-y: auto;height: 398px;">
                     <input style="margin:5px auto 0px 0px "  type="text" name="first_name" class="inputField" placeholder="First Name" required>
                     <input style="margin:5px auto 0px 0px" type="text" name="last_name" class="inputField" placeholder="Last Name" required>
@@ -47,9 +52,12 @@
                     <input style="margin:5px auto 0px 0px" type="password" name="cpassword" class="inputField" placeholder="Confirm Password" required>
                     <button type="submit" class="submitBtn"  style="font-size:15px;width:60%;padding:10px;display:flex;text-align:center;justify-cotent:center;align-items:center;margin-bottom: 70px;" >Register</button>
                 </form>
+                    <!--                    customer registration page end-->
+
                 </div>
             </div>
         </div>
+
 <script>
         var b = document.getElementById("backToHomePage");
         var selectedField = document.getElementById("selectedField");
@@ -57,15 +65,15 @@
         var y=document.getElementById('register');
         var z=document.getElementById('btn');
         function register(){
-            b.style.left='-400px';
-            x.style.left='-400px';
+            b.style.left='-900px';
+            x.style.left='-900px';
             y.style.left='50px';
             z.style.left='110px';
         }
         function login(){
-            b.style.left='50px';
-            x.style.left='50px';
-            y.style.left='450px';
+            b.style.left='100px';
+            x.style.left='100px';
+            y.style.left='900px';
             z.style.left='0px';
         }
 

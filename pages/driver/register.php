@@ -1,36 +1,54 @@
 <?php
+// Start session and include database connection
+
 session_start();
 include("../../connection.php");
+
+// Check if form has been submitted
 if (isset($_POST['first_name'])) {
+
+    // Initialize status message variable
     $statusMsg = '';
+
+    // Set file upload path
     $targetDir = "../../uploads/";
     $fileName = basename($_FILES["file"]["name"]);
     $targetFilePath = $targetDir . $fileName;
-    $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
+    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
 
-    if(!empty($_FILES["file"]["name"])){
-        $allowTypes = array('jpg','png','jpeg');
-        if(in_array($fileType, $allowTypes)){
-            if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
-                if(true){
-                    $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
-                }else{
+    // Check if file has been selected
+    if (!empty($_FILES["file"]["name"])) {
+        // Define allowed file types
+        $allowTypes = array('jpg', 'png', 'jpeg');
+        if (in_array($fileType, $allowTypes)) {
+            // TODO: Insert image file name into database
+            if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)) {
+                // Set status message for successful file upload
+                if (true) {
+                    $statusMsg = "The file " . $fileName . " has been uploaded successfully.";
+                } else {
+                    // Set status message for file upload failure
                     $statusMsg = "File upload failed, please try again.";
+
+                    // Display error message and exit script
                     echo "<div class='form'>
                   <h3>$statusMsg</h3><br/>
                   <p class='link'>Click here to <a href='./index.php'>registration</a> again.</p>
                   </div>";
                     exit();
                 }
-            }else{
+            } else {
                 $statusMsg = "Sorry, there was an error uploading your file.";
+
+                // Display error message and exit script
                 echo "<div class='form'>
                   <h3>$statusMsg</h3><br/>
                   <p class='link'>Click here to <a href='./index.php'>registration</a> again.</p>
                   </div>";
                 exit();
             }
-        }else{
+        } else {
+            // Set status message for disallowed file type
             $statusMsg = 'Sorry, only JPG, JPEG, PNG files are allowed to upload.';
 
             echo "<div class='form'>
@@ -39,7 +57,7 @@ if (isset($_POST['first_name'])) {
                   </div>";
             exit();
         }
-    }else{
+    } else {
         $statusMsg = 'Please select a file to upload.';
         echo "<div class='form'>
                   <h3>$statusMsg</h3><br/>
@@ -47,10 +65,6 @@ if (isset($_POST['first_name'])) {
                   </div>";
         exit();
     }
-// Display status message
-
-
-    $role_id = 3;
     $firstName = $_POST['first_name'];
     $lastName = $_POST['last_name'];
     $email = $_POST['email'];
@@ -68,41 +82,48 @@ if (isset($_POST['first_name'])) {
     $startTime = $_POST['startTime'];
     $endTime = $_POST['endTime'];
     $company = $_POST['company'];
-        $checkUser  = "SELECT email FROM driver WHERE email='$email'";
+
+    // Check if the email is already in use by another driver
+    $checkUser = "SELECT email FROM driver WHERE email='$email'";
     $checkUserResult = $connection->query($checkUser);
     $checkUserResult = $checkUserResult->fetchAll(PDO::FETCH_ASSOC);
-        if (COUNT($checkUserResult) >= 1){
-            echo "<div class='form'>
+    if (COUNT($checkUserResult) >= 1) {
+        // If the email is already in use, display an error message
+        echo "<div class='form'>
                   <h3>Email id Already Used</h3><br/>
                    <p class='link'>Click here to <a href='./index.php'>registration</a> again.</p>
                   </div>";
-        }else{
-            if ($password == $cpassword) {
-                $sql = "INSERT INTO driver (role_id,first_name,last_name,email,password,phoneno,
+    } else {
+        if ($password == $cpassword) {
+            // If the passwords match, insert the new driver's information into the database
+            $sql = "INSERT INTO driver (first_name,last_name,email,password,phoneno,
                     vehicle_number,licence_number,modal,capacity,pickup_from,pickup_to,cost_per_person, fileName, startTime, endTime, company)
-                    VALUES ('$role_id','$firstName','$lastName','$email','$password', '$phoneno',
+                    VALUES ('$firstName','$lastName','$email','$password', '$phoneno',
                      '$vehicle_number','$licence_number','$modal','$capacity','$pickup_from','$pickup_to','$cost_per_person', '$fileName', 
                      '$startTime','$endTime', '$company')";
-                $result = $connection->query($sql);
+            $result = $connection->query($sql);
 
-                if ($result) {
-                    echo "<div class='form'>
+            if ($result) {
+                // If the query was successful, display a success message
+                echo "<div class='form'>
                   <h3>Registered SuccessFully</h3><br/>
                   <p class='link'>Click here to <a href='./index.php'>registration</a> again.</p>
                   </div>";
-                } else {
-                    echo "<div class='form'>
+            } else {
+                // If the query was not successful, display an error message
+                echo "<div class='form'>
                   <h3>Required fields are missing</h3><br/>
                   <p class='link'>Click here to <a href='./index.php'>registration</a> again.</p>
                   </div>";
-                }
-            }else{
-                echo "<div class='form'>
+            }
+        } else {
+            // If the passwords do not match, display an error message
+            echo "<div class='form'>
                   <h3>Invalid password</h3><br/>
                   <p class='link'>Click here to <a href='./index.php'>registration</a> again.</p>
                   </div>";
-            }
-
         }
+
+    }
 }
 ?>

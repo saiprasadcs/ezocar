@@ -1,9 +1,8 @@
 <?php
 session_start();
 include("../../connection.php");
-
+// Check if the form was submitted
 if (isset($_POST['first_name'])) {
-    $role_id = 3;
     $firstName = $_POST['first_name'];
     $lastName = $_POST['last_name'];
     $email = $_POST['email'];
@@ -22,7 +21,8 @@ if (isset($_POST['first_name'])) {
     $cost_per_person = $_POST['cost_per_person'];
     $id = $_SESSION['driverId'];
 
-    $sql = "UPDATE driver SET role_id='$role_id',first_name='$firstName',last_name='$lastName',email='$email',phoneno='$phoneno',
+    // Update driver information in the database
+    $sql = "UPDATE driver SET first_name='$firstName',last_name='$lastName',email='$email',phoneno='$phoneno',
                     vehicle_number='$vehicle_number',licence_number='$licence_number',modal='$modal',capacity='$capacity',
                     pickup_from='$pickup_from',pickup_to='$pickup_to', cost_per_person='$cost_per_person',wallet ='$wallet',
                     startTime='$startTime', endTime='$endTime' , company='$company'
@@ -30,11 +30,13 @@ if (isset($_POST['first_name'])) {
 
     $result = $connection->query($sql);
     if ($result) {
+        // If update is successful, show success message
         echo "<div class='form'>
                   <h3>Updated SuccessFully</h3><br/>
                   <p class='link'>Click here to <a href='./driversList.php'>Driver</a> again.</p>
                   </div>";
     } else {
+        // If update failed, show error message and allow user to try again
         echo "<div class='form'>
                   <h3>Required fields are missing</h3><br/>
                   <p class='link'>Click here to <a href='./editDriver.php?driverId=$id'>Update</a> again.</p>

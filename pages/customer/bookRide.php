@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-
     <meta charset="UTF-8">
     <title>EzoCar</title>
     <meta charset="UTF-8">
@@ -9,14 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css">
     <link rel="stylesheet" href="../../styles/nav.css">
 </head>
-
 <body>
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
         <div class="d-flex align-items-center">
-<!--            <a class="text-reset me-3" href="#">-->
-<!--                <li><a  href=""><i class="fas fa-tachometer-alt"></i>Dashboard</a> </li>-->
-<!--            </a>-->
             <a class="text-reset me-3" href="#">
                 <li><a  href="myrides.php?type=0"><i class="far fa-address-book"></i>My Rides</a></li>
             </a>
@@ -33,7 +28,7 @@
         <div>
             <?php
             session_start();
-            $name =$_SESSION['userName'];
+            $name =$_SESSION['userName']; // get the username from the session
             echo "$name"
             ?>
         </div>
@@ -44,17 +39,18 @@
         <div class="row">
             <?php
             include '../../connection.php';
-            $sql = "SELECT * FROM `driver` where status=1";
+            $sql = "SELECT * FROM `driver` where status=1"; // SQL query to select all drivers with status = 1
             $result = $connection->query($sql);
-            $resultCount = COUNT($result->fetch(PDO::FETCH_ASSOC));
+            $resultCount = COUNT($result->fetch(PDO::FETCH_ASSOC));  // count the number of rows returned by the query
 
             if($result)
-            {
-                if($resultCount > 0)
+            { // check if query was successful
+                if($resultCount > 0) // check if there are any rows returned
                 {
-                    while($row = $result->fetch(PDO::FETCH_ASSOC)){
-                            $id = $row['id'];
-                            echo "<div class=\"col-md-4\">
+                    while($row = $result->fetch(PDO::FETCH_ASSOC)){ // loop through each row returned by the query
+                            $id = $row['id']; // get the id of the current row
+                        // display driver information
+                        echo "<div class=\"col-md-4\">
                 <div class=\"card p-3 mb-2\">
                     <div class=\"d-flex justify-content-between\">
                         <div class=\"d-flex flex-row align-items-center\">

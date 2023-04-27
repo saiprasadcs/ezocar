@@ -2,36 +2,35 @@
 session_start();
 include("../../connection.php");
 if (isset($_GET['userId'])) {
-
+    // Initialize a variable to hold status message
     $statusMsg = '';
-// File upload path
+
+    // Set the target directory for file upload
     $targetDir = "../../uploads/";
+
+    // Get the name of the uploaded file
     $fileName = basename($_FILES["file"]["name"]);
+
+    // Set the target file path
     $targetFilePath = $targetDir . $fileName;
     $fileType = pathinfo($targetFilePath,PATHINFO_EXTENSION);
-    print_r($_FILES);
-    print_r($_FILES["file"]);
-    print_r($_FILES["file"]["name"]);
+
+    // Check if a file has been uploaded
     if(!empty($_FILES["file"]["name"])){
-        // Allow certain file formats
+        // Define an array of allowed file types
         $allowTypes = array('jpg','png','jpeg');
+
+        // Check if the uploaded file type is allowed
         if(in_array($fileType, $allowTypes)){
-            // Upload file to server
+
+            // Upload the file to the server
             if(move_uploaded_file($_FILES["file"]["tmp_name"], $targetFilePath)){
-                // Insert image file name into database
-//            $insert = $connection->query("INSERT into images (file_name, uploaded_on) VALUES ('".$fileName."', NOW())");
-                if(true){
-                    $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
-                }else{
-                    $statusMsg = "File upload failed, please try again.";
-                    echo "<div class='form'>
-                  <h3>$statusMsg</h3><br/>
-                  <p class='link'>Click here to <a href='./profile.php'>Upload</a> again.</p>
-                  </div>";
-                    exit();
-                }
+
+                $statusMsg = "The file ".$fileName. " has been uploaded successfully.";
             }else{
+                // Set an error message if there was an error uploading the file
                 $statusMsg = "Sorry, there was an error uploading your file.";
+                // Display the error message and provide a link to try again
                 echo "<div class='form'>
                   <h3>$statusMsg</h3><br/>
                   <p class='link'>Click here to <a href='./profile.php'>Upload</a> again.</p>
@@ -39,8 +38,9 @@ if (isset($_GET['userId'])) {
                 exit();
             }
         }else{
+            // Set an error message if the uploaded file type is not allowed
             $statusMsg = 'Sorry, only JPG, JPEG, PNG files are allowed to upload.';
-
+            // Display the error message and provide a link to try again
             echo "<div class='form'>
                   <h3>$statusMsg</h3><br/>
                   <p class='link'>Click here to <a href='./index.php'>Upload</a> again.</p>
@@ -48,7 +48,9 @@ if (isset($_GET['userId'])) {
             exit();
         }
     }else{
+        // Set an error message if no file has been selected for upload
         $statusMsg = 'Please select a file to upload.';
+        // Display the error message and provide a link to try again
         echo "<div class='form'>
                   <h3>$statusMsg</h3><br/>
                   <p class='link'>Click here to <a href='./index.php'>Upload</a> again.</p>
@@ -56,10 +58,19 @@ if (isset($_GET['userId'])) {
         exit();
     }
 
+    // Get the user ID from the GET request
     $userId = $_GET['userId'];
+
+    [0]
+
+    // Update the driver table in the database with the uploaded file name
     $sql = "UPDATE driver SET fileName='$fileName' WHERE id ='$userId'";
     $result = $connection->query($sql);
+
+    // Check if the query was successful
     if ($result) {
+
+        // Redirect the user to their profile
         header("Location:profile.php");
         echo "<div class='form'>
                   <h3>$statusMsg</h3><br/>

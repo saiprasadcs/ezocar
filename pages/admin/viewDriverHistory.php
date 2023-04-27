@@ -69,7 +69,10 @@ include("../../connection.php");?>
                 </thead>
                 <?php
                 include("../../connection.php");
-                $driverId=$_GET['id'];
+                // retrieve the driver ID from the URL parameter using $_GET
+                $driverId = $_GET['id'];
+
+                // query to retrieve all ride details where the driver ID matches
                 $sql = "SELECT  *,CONCAT(c.first_name,' ', c.last_name) 
                         AS customer_name,CONCAT(d.first_name,' ', d.last_name) 
                         AS driver_name, d.pickup_from,d.pickup_to FROM rides 

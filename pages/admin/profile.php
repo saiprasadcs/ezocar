@@ -47,17 +47,6 @@ session_start();
         <div class="col-12 m-0 p-0">
             <section style="background-color: #eee;">
                 <div class="container py-5">
-<!--                    <div class="row">-->
-<!--                        <div class="col">-->
-<!--                            <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">-->
-<!--                                <ol class="breadcrumb mb-0">-->
-<!--                                    <li class="breadcrumb-item"><a href="../admin/customerList.php">Customer</a></li>-->
-<!--                                    <li class="breadcrumb-item active" aria-current="page">Customer Profile</li>-->
-<!--                                </ol>-->
-<!--                            </nav>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="card mb-4">
@@ -65,6 +54,7 @@ session_start();
                                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
                                          class="rounded-circle img-fluid" style="width: 150px;">
                                     <h5 class="my-3">
+<!--                                       display user name in the page-->
                                         <?php
                                         // session_start();
                                         include "../../connection.php";

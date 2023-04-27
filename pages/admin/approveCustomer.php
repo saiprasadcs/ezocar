@@ -4,7 +4,7 @@ include("../../connection.php");
 if (isset($_GET['customerId'])) {
     $userId = $_GET['customerId'];
     $sql = "UPDATE customer SET status=1 WHERE id ='$userId'";
-    $result = mysqli_query($connection, $sql);
+    $result = $connection->query($sql);
     if ($result) {
         echo "<div class='form'>
                   <h3>Updated SuccessFully</h3><br/>

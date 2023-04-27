@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="../../styles/nav.css">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
-
 <body >
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
@@ -139,20 +138,25 @@
                                 <h6 class=\"mb-0\">".$row['customer_name']."</h6> <span>".$row['phoneno']."</span>
                             </div>
                         </div>";
+
+                               // status 0 means we will display the accept and reject button to the end user
                                if ($row['status'] === '0'){
                                    echo "<a href='acceptRide.php?rideId=$rideId&status=1&rider_id=$rider_id&cost=$cost_per_person&driver_id=$driver_id' class=\"btn btn-primary\"><span>ACCEPT</span> </a>
                         <a href='acceptRide.php?rideId=$rideId&status=2&rider_id=$rider_id&cost=$cost_per_person&driver_id=$driver_id' class=\"btn btn-outline-danger\"><span>Reject</span> </a>
                     </div>";
                                }elseif ($row['status'] == '1'){
+                                   // status 1 means we will display the Pick and reject button to the end user
                                    echo "
                         <a href='acceptRide.php?rideId=$rideId&status=2&rider_id=$rider_id&cost=$cost_per_person&driver_id=$driver_id' class=\"btn btn-outline-danger\"><span>Reject</span> </a>
                         <a href='acceptRide.php?rideId=$rideId&status=3&rider_id=$rider_id&cost=$cost_per_person&driver_id=$driver_id' class=\"btn btn-outline-success\"><span>Pick</span> </a>
                     </div>";
                                }elseif ($row['status'] == '3'){
+                                   // status 3 means we will display the drop button to the end user
                                    echo "
                         <a href='acceptRide.php?rideId=$rideId&status=4&rider_id=$rider_id&cost=$cost_per_person&driver_id=$driver_id' class=\"btn btn-outline-danger\"><span>Dropped</span> </a>
                     </div>";
                                }else{
+                                   // status 4 means we will display the completed text message with no action
                                    echo "<a class=\"btn btn-primary-success\"><span>Completed</span> </a>
                     </div>";
                                }
