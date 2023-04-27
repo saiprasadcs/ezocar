@@ -1,0 +1,46 @@
+/*nav bar design codes*/
+li {
+    list-style-type: none !important;
+    margin-left: 30px;
+}
+nav{
+    padding: 22px 20px 22px 13px !important;
+    background-color: rgba(0, 0, 0, 0.9) !important;
+    color: #F3C693 !important;
+}
+
+nav a {
+    color: #F3C693 !important;
+    text-decoration: none;
+    background-color: transparent;
+}
+
+
+nav i{
+    margin-right: 11px;
+}
+
+.btn-primary{
+    background-color: #F3C693 !important;
+    color: black !important;
+    border: black !important;
+}
+
+.progress-bar{
+    background-color: #F3C693 !important;
+}
+.job-tab .nav-tabs>li>a.active, .job-tab .nav-tabs>li a.active>:focus, .job-tab .nav-tabs>li>a.active:hover, .job-tab .nav-tabs>li>a:hover {
+    border: none;
+    background-color: #F3C693 !important;
+    color: black !important;
+}
+.btn-outline-primary {
+    color: black !important;
+    border-color: #F3C693;
+}
+
+.btn-outline-primary:hover {
+    color: black !important;
+    background-color: #F3C693 !important;
+    border-color: black;
+}

@@ -1,0 +1,195 @@
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+*,*::after, *::before{
+    box-sizing:border-box;
+}
+.fullPage{
+    width: 100%;
+    height: 100%;
+    position:absolute;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75),rgba(0, 0, 0, 0.75)),url('../assets/driver2.jpg');
+}
+.navbar{
+    display: flex;
+    padding: 20px;
+    padding-top:50px;
+    padding-left:50px;
+    padding-right:30px;
+    align-items: center;
+}
+.navbar a{
+    color:palevioletred;
+}
+nav{
+    flex:1;
+    text-align: right;
+}
+nav ul{
+    list-style:none;
+    display: inline-block;
+}
+nav ul li{
+    margin-right:70px;
+    display: inline-block;
+}
+nav ul li a{
+    padding: 10px;
+    color:white;
+    font-size:20px;
+    text-decoration: none;
+    font-family:sans-serif;
+}
+nav ul li button{
+    border:none;
+    outline:none;
+    color:white;
+    font-size:20px;
+    cursor: pointer;
+    background: transparent;
+    font-family: sans-serif;
+}
+nav ul li a:hover{
+    transition: .5s;
+    color: palevioletred;
+}
+nav ul li button:hover{
+    color: palevioletred;
+}
+a{
+    text-decoration: none;
+    color:palevioletred;
+    font-size:28px;
+}
+#loginForm{
+    display: block;
+}
+.formBox{
+    width: 50%;
+    height: 520px;
+    padding: 10px;
+    margin:5% auto;
+    overflow: hidden;
+    position: relative;
+    border-radius: 20px;
+    background:rgba(0, 0, 0, 0.9);
+    border: 2px solid rgba(255,255,255,0.5);
+}
+.formBox a{
+    display:flex;
+    font-size:60px;
+    text-align:center;
+    align-items:center;
+    justify-content:center;
+
+    margin:0px auto 0px auto;
+}
+.formBox a:hover{
+    color:palevioletred;
+}
+.buttonBox{
+    width: 220px;
+    margin:20px auto 0px auto;
+    position: relative;
+    border-radius: 30px;
+    box-shadow: 0 0 20px 9px #ff61241f;
+}
+.toggle-btn{
+    border:0;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    font-size: 15px;
+    padding: 10px 25px;
+
+    background: transparent;
+}
+#btn{
+    top: 0;
+    left: 0;
+    width: 110px;
+    height: 100%;
+    background: #F3C693;
+    position: absolute;
+    border-radius: 30px;
+    transition: .5s;
+}
+.inputGroupLogin{
+    top: 200px;
+    width: 800px !important;
+    margin:0px auto 0px auto;
+    transition: .5s;
+    position: absolute;
+}
+.inputGroupRegister{
+    top:180px;
+    width: 80%;
+    transition: .5s;
+    position: absolute;
+}
+
+.inputField{
+    width: 100%;
+    margin:10px 0;
+    outline: none;
+    border-left:0;
+    border-top: 0;
+    padding:10px 0;
+    border-right: 0;
+    background: transparent;
+    border-bottom: 1px solid #999;
+}
+.inputField::placeholder{
+    color: white;
+}
+.submitBtn{
+    border: 0;
+    width: 85%;
+    margin:25px auto;
+    outline: none;
+    display: flex;
+    cursor: pointer;
+    text-align:center;
+    padding: 10px 30px;
+    border-radius: 30px;
+    align-items: center;
+    background: #F3C693;
+    justify-content: center;
+    font-size: 15px;
+}
+.submitBtn button{
+    margin:auto;
+    display: flex;
+    text-align:center;
+    align-items: center;
+    justify-content: center;
+}
+span{
+    color:#777;
+    bottom: 68px;
+    font-size: 12px;
+    position: absolute;
+}
+#login{
+    left:50px;
+}
+#login input{
+    color:white;
+    font-size:15px;
+}
+#register{
+    left:900px
+}
+#register input{
+    color:white;
+    font-size:15px;
+}
+
+
