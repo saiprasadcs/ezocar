@@ -64,21 +64,30 @@
                     <th scope="col">Last</th>
                     <th scope="col">Phone No</th>
                     <th scope="col">EMAIL</th>
+                    <th scope="col">Company</th>
                     <th scope="col">Action</th>
                 </tr>
                 </thead>
                 <tbody>
                     <?php
                     if (isset($_GET['status'])){
+                         // if a status is passed through the URL parameter 'status', 
+                        // retrieve all customers with that status
                         $status=$_GET['status'];
                         $sql = "SELECT * FROM customer WHERE status='$status'";
                     }else{
+                        // otherwise, retrieve all customers
                         $sql = "SELECT * FROM customer";
                     }
                         $result = $connection->query($sql);
+                        // loop through each row in the result set
                         while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                            // get the ID of the current customer
                             $id = $row['id'];
+                             // check if the customer is approved or not
                             if ($row['status'] == 1){
+                                // if approved, display the customer's details and an 'Edit' button
+
                                 echo'<tbody>
                                         <tr>
                                             <th scope="row">'.$row['id'].'</th>
@@ -86,12 +95,14 @@
                                                 <td>'.$row['last_name'].'</td>
                                                 <td>'.$row['phoneno'].'</td>
                                                 <td>'.$row['email'].'</td>
+                                                <td>'.$row['company'].'</td>
                                                 <td><div>
                                                         <a  href="editCustomer.php?customerId='.$id.'" class="btn btn-outline-primary ml-3">Edit</a>
                                                     </div>
                                                 </td>
                                         </tr>';
                             }else{
+                                 // if not approved, display the customer's details and an 'Approve' button
                                 echo'<tbody>
                                         <tr>
                                             <th scope="row">'.$row['id'].'</th>
@@ -99,6 +110,7 @@
                                                 <td>'.$row['last_name'].'</td>
                                                 <td>'.$row['phoneno'].'</td>
                                                 <td>'.$row['email'].'</td>
+                                                <td>'.$row['company'].'</td>
                                                 <td><div>
                                                         <a  href="approveCustomer.php?customerId='.$id.'" class="btn btn-outline-primary ml-3">Approve</a>
                                                     </div>

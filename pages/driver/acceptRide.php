@@ -2,17 +2,19 @@
 session_start();
 include("../../connection.php");
 if (isset($_GET['rideId'])) {  // Check if the ride ID is set in the GET request
-    $rideId = $_GET['rideId']; // Get the ride ID from the GET request
+    $rideId = $_GET['rideId']; 
     $status = $_GET['status'];
     $rider_id = $_GET['rider_id'];
     $cost_per_person = $_GET['cost'];
     $driver_id = $_GET['driver_id'];
 
     $sql = "UPDATE rides SET status='$status' WHERE id ='$rideId'";  // Update the status of the ride in the database
-    $result = $connection->query($sql); // Execute the query and get the result
-
+    
+    $result = $connection->query($sql);
+    $checkResultData = $result->fetchAll(PDO::FETCH_ASSOC);
     if ($result) { // If the query was successful
-        if ($status == '2'){ // If the status is '2' (ride rejected)
+        if ($status == '2' && $checkResultData[0]['status'] == '1'){
+            // If the status is '2' (ride rejected)
             // Update the driver's decrease the wallet and decresed occupied seats in the database
             $updateDriverSQL = "UPDATE driver SET wallet=wallet-$cost_per_person, occupied = occupied-1 WHERE id ='$driver_id'";
             $updateDriverSQLResult = $connection->query($updateDriverSQL); // Execute the query and get the result
@@ -41,7 +43,7 @@ if (isset($_GET['rideId'])) {  // Check if the ride ID is set in the GET request
         }elseif ($status == '1'){
             // If the status is '1' (ride accepted)
             $updateDriverSQL = "UPDATE driver SET wallet=wallet+$cost_per_person, occupied = occupied+1 WHERE id ='$driver_id'";
-            $updateDriverSQLResult = mysqli_query($connection, $updateDriverSQL);
+            $updateDriverSQLResult = $connection->query($updateDriverSQL);
             if ($updateDriverSQLResult){
 
                 // Update the customer's wallet in the database
@@ -55,6 +57,18 @@ if (isset($_GET['rideId'])) {  // Check if the ride ID is set in the GET request
                  <h3>Error in customer update wallet</h3><br/>
                  </div>";
                 }
+            }else{
+                // If the query was not successful
+                echo "<div class='form'>
+                 <h3>Error in driver update wallet</h3><br/>
+                 </div>";
+            }
+        }elseif ($status == '4'){
+            // If the status is '4' (ride completed)
+            $updateDriverSQL = "UPDATE driver SET  occupied = occupied-1 WHERE id ='$driver_id'";
+            $updateDriverSQLResult = $connection->query($updateDriverSQL);
+            if ($updateDriverSQLResult){
+                    header("Location:myrides.php?type=$status");
             }else{
                 // If the query was not successful
                 echo "<div class='form'>

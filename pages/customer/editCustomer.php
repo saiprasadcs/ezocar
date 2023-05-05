@@ -20,9 +20,6 @@ $_SESSION['customerId']=$_GET['customerId'];
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
         <div class="d-flex align-items-center">
-            <!--            <a class="text-reset me-3" href="#">-->
-            <!--                <li><a  href=""><i class="fas fa-tachometer-alt"></i>Dashboard</a> </li>-->
-            <!--            </a>-->
             <a class="text-reset me-3" href="#">
                 <li><a  href="myrides.php" style="    text-decoration: underline;" ><i class="far fa-address-book"></i>My Rides</a></li>
             </a>

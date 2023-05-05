@@ -39,15 +39,14 @@
         <div class="row">
             <?php
             include '../../connection.php';
-            $sql = "SELECT * FROM `driver` where status=1"; // SQL query to select all drivers with status = 1
+             // SQL query to select all drivers with status = 1
+            $sql = "SELECT * FROM `driver` where status=1";
             $result = $connection->query($sql);
-            $resultCount = COUNT($result->fetch(PDO::FETCH_ASSOC));  // count the number of rows returned by the query
-
+            // count the number of rows returned by the query
             if($result)
             { // check if query was successful
-                if($resultCount > 0) // check if there are any rows returned
-                {
-                    while($row = $result->fetch(PDO::FETCH_ASSOC)){ // loop through each row returned by the query
+                    // loop through each row returned by the query
+                    while($row = $result->fetch(PDO::FETCH_ASSOC)){ 
                             $id = $row['id']; // get the id of the current row
                         // display driver information
                         echo "<div class=\"col-md-4\">
@@ -74,16 +73,11 @@
                 </div>
             </div>";
                     }
-                }
-                else
-                {
-                    echo "No Rides are available";
-                }
+
             }
             else
             {
                 return $result->error;
-                echo  $result->error;
             }
             ?>
 

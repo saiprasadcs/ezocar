@@ -155,8 +155,11 @@
                                    echo "
                         <a href='acceptRide.php?rideId=$rideId&status=4&rider_id=$rider_id&cost=$cost_per_person&driver_id=$driver_id' class=\"btn btn-outline-danger\"><span>Dropped</span> </a>
                     </div>";
+                               }elseif ($row['status'] == '2'){
+
+                                   echo "<a class=\"btn btn-primary-success\"><span>Rejected</span> </a>
+                    </div>";
                                }else{
-                                   // status 4 means we will display the completed text message with no action
                                    echo "<a class=\"btn btn-primary-success\"><span>Completed</span> </a>
                     </div>";
                                }
@@ -181,11 +184,11 @@
                                     echo "No DATA Found";
                                 }
                             ?>
-                        </div><!-- /.row -->
-                    </div><!-- /.tab-pane -->
+                        </div>
+                    </div>
                 </div>
-            </div><!-- /.job-tab -->
-        </div><!-- /.container -->
+            </div>
+        </div>
     </div>
 </section>
 

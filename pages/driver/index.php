@@ -123,7 +123,7 @@
     function login(){
         b.style.left='100px';
         x.style.left='100px';
-        y.style.left='900px';
+        y.style.left='1100px';
         z.style.left='0px';
     }
 

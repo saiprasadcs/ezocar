@@ -61,7 +61,6 @@ if (isset($_GET['userId'])) {
     // Get the user ID from the GET request
     $userId = $_GET['userId'];
 
-    [0]
 
     // Update the driver table in the database with the uploaded file name
     $sql = "UPDATE driver SET fileName='$fileName' WHERE id ='$userId'";

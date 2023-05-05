@@ -1,6 +1,4 @@
 <?php
-// Start session and include database connection
-
 session_start();
 include("../../connection.php");
 

@@ -1,9 +1,9 @@
 <?php
 session_start();
 include("../../connection.php");
-
+// Check if the form has been submitted
 if (isset($_POST['first_name'])) {
-    $role_id = 3;
+     // Get form data
     $firstName = $_POST['first_name'];
     $lastName = $_POST['last_name'];
     $email = $_POST['email'];
@@ -21,6 +21,7 @@ if (isset($_POST['first_name'])) {
     $wallet = $_POST['wallet'];
     $company = $_POST['company'];
     $cost_per_person = $_POST['cost_per_person'];
+    // Check if email is already registered
     $checkUser  = "SELECT email FROM driver WHERE email='$email'";
 
     $checkUserResult = $connection->query($checkUser);
@@ -32,13 +33,16 @@ if (isset($_POST['first_name'])) {
                   </div>";
     }else{
         if ($password == $cpassword) {
-            $sql = "INSERT INTO driver (role_id,first_name,last_name,email,password,phoneno,
-                    vehicle_number,licence_number,modal,capacity,pickup_from,pickup_to,cost_per_person,wallet, startTime, endTime, company)
-                    VALUES ('$role_id','$firstName','$lastName','$email','$password', '$phoneno',
+            // Insert new driver data into the database
+            $sql = "INSERT INTO driver (first_name,last_name,email,password,phoneno,
+                    vehicle_number,licence_number,modal,capacity,pickup_from,pickup_to,cost_per_person,wallet, startTime, endTime, 
+                    company, status)
+                    VALUES ('$firstName','$lastName','$email','$password', '$phoneno',
                      '$vehicle_number','$licence_number','$modal','$capacity','$pickup_from','$pickup_to','$cost_per_person', 
-                     '$wallet', '$startTime', '$endTime','$company')";
+                     '$wallet', '$startTime', '$endTime','$company', 1)";
             $result = $connection->query($sql);
             if ($result) {
+                // Show success message
                 echo "<div class='form'>
                   <h3>Registered SuccessFully</h3><br/>
                   <p class='link'>Click here to <a href='./addDriver.php'>Add</a> again.</p>

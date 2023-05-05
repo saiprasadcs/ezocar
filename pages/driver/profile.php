@@ -14,9 +14,6 @@
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
         <div class="d-flex align-items-center">
-<!--            <a class="text-reset me-3" href="#">-->
-<!--                <li><a  href=""><i class="fas fa-tachometer-alt"></i>Dashboard</a> </li>-->
-<!--            </a>-->
             <a class="text-reset me-3" href="#">
                 <li><a  href="myrides.php"><i class="far fa-address-book"></i>My Rides</a></li>
             </a>
@@ -41,17 +38,6 @@
         <div class="col-12 m-0 p-0">
             <section style="background-color: #eee;">
                 <div class="container py-5">
-<!--                    <div class="row">-->
-<!--                        <div class="col">-->
-<!--                            <nav aria-label="breadcrumb" class="bg-light rounded-3 p-3 mb-4">-->
-<!--                                <ol class="breadcrumb mb-0">-->
-<!--                                    <li class="breadcrumb-item"><a href="../admin/customerList.php">Customer</a></li>-->
-<!--                                    <li class="breadcrumb-item active" aria-current="page">Customer Profile</li>-->
-<!--                                </ol>-->
-<!--                            </nav>-->
-<!--                        </div>-->
-<!--                    </div>-->
-
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="card mb-4">

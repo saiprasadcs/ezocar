@@ -53,11 +53,16 @@
 <!-- fetching all total drivers data-->
                                 <?php
                                 include '../../connection.php';
+                                // Select all drivers from the `driver` table
                                 $sql = "SELECT * FROM `driver`";
                                 $result = $connection->query($sql);
+                                // Fetch all results as an associative array
                                 $result = $result->fetchAll(PDO::FETCH_ASSOC);
+                                // Get the ID of the currently logged in user from the session
                                 $id = $_SESSION['userId'];
+                                // If there are results, print the count
                                 if ($result){
+                                    
                                     echo COUNT($result);
                                 }
                                 ?>
@@ -85,10 +90,15 @@
                                 <!-- fetching all total customer data from customer-->
                                 <?php
                                 include '../../connection.php';
+                                // Select all customers from the database
                                 $sql = "SELECT * FROM `customer`";
+                                 // Execute the query and get the result set
                                 $result = $connection->query($sql);
+                                // Fetch all the results into an associative array
                                 $result = $result->fetchAll(PDO::FETCH_ASSOC);
+                                // Get the ID of the current user from the session
                                 $id = $_SESSION['userId'];
+                                // If there are results, print the count of customers
                                 if ($result){
                                     echo COUNT($result);
                                 }
@@ -116,10 +126,14 @@
                             <p class="mb-1 text-end w-50" style="font-size: 16px;">
                                 <?php
                                 include '../../connection.php';
+                                // select all rows from 'rides' table
                                 $sql = "SELECT * FROM `rides`";
                                 $result = $connection->query($sql);
+                                // fetch all rows as an associative array
                                 $result = $result->fetchAll(PDO::FETCH_ASSOC);
+                                // get the ID of the currently logged in user 
                                 $id = $_SESSION['userId'];
+                                // output the number of rows fetched from the 'rides' table
                                 if ($result){
                                     echo COUNT($result);
                                 }
@@ -148,10 +162,13 @@
                                 <!-- fetching all total ACTIVE drivers data-->
                                 <?php
                                 include '../../connection.php';
+                                // select all drivers with status = 1
                                 $sql = "SELECT * FROM `driver` WHERE status=1";
+                                // execute the query and get the result
                                 $result = $connection->query($sql);
                                 $result = $result->fetchAll(PDO::FETCH_ASSOC);
                                 $id = $_SESSION['userId'];
+                                // if the query returns any result, print the count
                                 if ($result){
                                     echo COUNT($result);
                                 }
@@ -179,10 +196,13 @@
                             <p class="mb-1 text-end w-50" style="font-size: 16px;">
                                 <?php
                                 include '../../connection.php';
+                                 // Create the SQL query to select all rows from the "customer" table where status=1
                                 $sql = "SELECT * FROM `customer` WHERE status=1";
+                                // Execute the query and fetch all rows as an associative array
                                 $result = $connection->query($sql);
                                 $result = $result->fetchAll(PDO::FETCH_ASSOC);
                                 $id = $_SESSION['userId'];
+                                // If the query returned any rows, output the count
                                 if ($result){
                                     echo COUNT($result);
                                 }
@@ -210,10 +230,15 @@
                             <p class="mb-1 text-end w-50" style="font-size: 16px;">
                                 <?php
                                 include '../../connection.php';
+                                // SQL query to select all rides where status is 4
                                 $sql = "SELECT * FROM `rides` WHERE status=4";
+                                // Execute the SQL query
                                 $result = $connection->query($sql);
+                                // Fetch all rows as an associative array
                                 $result = $result->fetchAll(PDO::FETCH_ASSOC);
+                                // Get the user ID from the session
                                 $id = $_SESSION['userId'];
+                                // If the query returned results, output the count of rows
                                 if ($result){
                                     echo COUNT($result);
                                 }

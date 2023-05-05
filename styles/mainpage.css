@@ -71,7 +71,7 @@ a{
     display: block;
 }
 .formBox{
-    width: 50%;
+    width: 65%;
     height: 520px;
     padding: 10px;
     margin:5% auto;
@@ -185,7 +185,7 @@ span{
     font-size:15px;
 }
 #register{
-    left:900px
+    left:1100px
 }
 #register input{
     color:white;

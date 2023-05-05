@@ -13,7 +13,7 @@ session_start();
         if($count == 1){ // if only one row is returned
             if ($row[0]['status'] == 1){
                 // check if the customer's status is active
-                $_SESSION['id'] = $row[0]['id']; // set the customer's id in the session
+                $_SESSION['id'] = $row[0]['id']; 
                 $_SESSION['userName'] = $row[0]['first_name'].' '.$row[0]['last_name']; // set the customer's name in the session
                 $id =$row[0]['id'];
                 $_SESSION['login'] = true; // set the login status in the session to true

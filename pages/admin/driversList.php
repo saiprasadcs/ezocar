@@ -64,13 +64,13 @@
             </a>
         </div>
     </div>
-</div>
-<section>
-    <div class="container" style="margin:110px auto">
+    <section>
+    <div class="container-fluid" style="margin:110px auto;position: absolute;
+    overflow: auto;">
         <div class="text-center mt-5">
             <h4>Drivers List</h4>
         </div>
-        <div class="d-flex justify-content-center">
+        <div class="row">
             <table class="table table-hover" style="width: 100% !important;overflow-x: scroll">
                 <thead>
                 <tr>
@@ -87,7 +87,7 @@
                     <th scope="col">End Time</th>
                     <th scope="col">Cost Per Person</th>
                     <th scope="col">Wallet</th>
-                    <th scope="col">Active Orders</th>
+                
                     <th scope="col">Proof</th>
                     <th scope="col">Action</th>
                 </tr>
@@ -110,8 +110,10 @@
 
                 // loop through the query result and display driver data in a table
                 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                     // get the driver ID and file path
                     $id = $row['id'];
                     $filePath = '../../uploads/' . $row['fileName'];
+                     // check if driver status is pending (0)
                     if ($row['status'] == 0) {
                         // display data in table row with approve button
                         echo '<tbody>
@@ -129,7 +131,7 @@
                                         <td>' . $row['endTime'] . '</td>
                                         <td>' . $row['cost_per_person'] . '</td>
                                         <td>' . $row['wallet'] . '</td>
-                                        <td>' . $row['active_orders'] . '</td>
+                                       
                                      <td><a target="_blank" href="' . $filePath . '">' . $row['fileName'] . '</a></td>
                                         <td>
                                         <div>
@@ -155,7 +157,7 @@
                                         <td>' . $row['endTime'] . '</td>
                                         <td>' . $row['cost_per_person'] . '</td>
                                         <td>' . $row['wallet'] . '</td>
-                                        <td>' . $row['active_orders'] . '</td>
+                                       
                                          <td><a target="_blank" href="' . $filePath . '">' . $row['fileName'] . '</a></td>
                                         <td>
                                         <div>
@@ -171,6 +173,8 @@
         </div>
     </div>
 </section>
+</div>
+
 <script>
     function something() {
         document.getElementById("mainArea").style.display = 'block';

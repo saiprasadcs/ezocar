@@ -79,8 +79,10 @@ include("../../connection.php");?>
                         LEFT JOIN driver as d ON d.id=rides.driver_id
                          LEFT JOIN customer as c ON c.id=rides.rider_id
                           WHERE driver_id='$driverId'";
+                          // Execute the query and fetch the result as an associative array
                 $result = $connection->query($sql);
                 while($row = $result->fetch(PDO::FETCH_ASSOC)){
+                    // Display the ride details in a table row
                     echo'<tbody>
                                     <tr>
                                      <th scope="row">'.$row['id'].'</th>
@@ -96,31 +98,6 @@ include("../../connection.php");?>
         </div>
     </div>
 </section>
-<script>
-    function something(){
-        document.getElementById("mainArea").style.display='block';
-    }
 
-    window.addEventListener('mouseup', function(event){
-        var box = document.getElementById('mainArea');
-        if(event.target != box && event.target.parentNode != box){
-            box.style.display='none';
-        }
-    })
-</script>
 </body>
-
-<!-- <script>
-
-</script> -->
-
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"></script>
-<script>
-    function open(){
-        document.getElementById("something").display.style='block';
-    }
-
-</script>
 </html>

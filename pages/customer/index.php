@@ -19,7 +19,7 @@
                         <button style="margin:auto 2.5px" type="button" name="button" class="toggle-btn" onclick="login()">Log In</button>
                         <button style="margin:auto 2.5px" type="button" name="button" class="toggle-btn" onclick="register()">Register</button>
                     </div>
-
+                    
 <!--                    customer login page starts-->
                     <form class="inputGroupLogin" id="login" action="login.php" method="POST">
                         <div style="margin:10px 0px 0px 0px">
@@ -73,7 +73,7 @@
         function login(){
             b.style.left='100px';
             x.style.left='100px';
-            y.style.left='900px';
+            y.style.left='1100px';
             z.style.left='0px';
         }
 

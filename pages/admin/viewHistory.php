@@ -109,6 +109,7 @@ include("../../connection.php"); ?>
                 }
 
                 $result = $connection->query($sql);
+                // Fetch results row by row
                 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                     echo '<tbody>
                                     <tr>
